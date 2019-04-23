@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.8.1)
+  - KMPlaceholderTextView (1.4.0)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - KMPlaceholderTextView
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - KMPlaceholderTextView
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 9360d11c38084b86261a44fe1b007c10bff6fafb
+
+COCOAPODS: 1.6.1
