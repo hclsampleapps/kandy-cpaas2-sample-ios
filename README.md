@@ -4,12 +4,12 @@ Sample app of CPaaS2 modules (Call, SMS, Chat, Presence, Address book)
 ## Introduction
 It is a sample app where CPaaS2 APIs are used to make the following modules
 
-[ ] Call
-[x] SMS
-[x] Chat
-[ ] Presence
-[x] Address book
-[ ] 2FA
+- [ ] Call
+- [x] SMS
+- [x] Chat
+- [ ] Presence
+- [x] Address book
+- [ ] 2FA
 
 ## Installation
 Instructions to install the .ipa on iPhone using Xcode
