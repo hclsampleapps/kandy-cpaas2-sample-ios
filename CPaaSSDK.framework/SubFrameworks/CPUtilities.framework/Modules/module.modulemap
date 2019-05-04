@@ -1,0 +1,11 @@
+framework module CPUtilities {
+  umbrella header "CPUtilities.h"
+
+  export *
+  module * { export * }
+}
+
+module CPUtilities.Swift {
+    header "CPUtilities-Swift.h"
+    requires objc
+}
