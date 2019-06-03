@@ -20,6 +20,7 @@
 @class CPAudioSessionConfiguration;
 @class CPAudioCodecConfiguration;
 @class CPLogManager;
+@class CPCodecToReplace;
 
 @protocol CPLoggingDelegate;
 
@@ -97,6 +98,13 @@ NS_ASSUME_NONNULL_BEGIN
  * - Since: 1.0.0
  */
 @property (nonatomic, strong) CPCodecSet *preferredCodecSet;
+
+/**
+ * Sets ReplaceCodecSet to modify payload numbers of audio and video codecs
+ *
+ * - Since: 1.4.0
+ */
+@property (nonatomic, strong) NSArray<CPCodecToReplace *> * _Nullable replaceCodecSet;
 
 /**
  * Sets the ICE option as ICE_VANILLA or ICE_TRICKLE.

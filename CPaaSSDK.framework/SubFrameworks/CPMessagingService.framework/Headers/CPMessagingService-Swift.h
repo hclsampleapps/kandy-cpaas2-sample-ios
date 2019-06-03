@@ -194,13 +194,22 @@ SWIFT_CLASS("_TtC18CPMessagingService16CPActivityHandle")
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
+
+SWIFT_CLASS("_TtC18CPMessagingService14FetchedObjects")
+@interface FetchedObjects : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @class CPError;
-@class CPMessage;
+@class FetchResult;
+@class FetchOptions;
 @class CPOutboundMessage;
+@class CPMessage;
 
 /// This is an abstract base class used to access the common functionality and members of a MessageService conversation.
 SWIFT_CLASS("_TtC18CPMessagingService14CPConversation")
-@interface CPConversation : NSObject
+@interface CPConversation : FetchedObjects
+@property (nonatomic, readonly, copy) NSString * _Nonnull fromAddress;
 /// Remote party with which the conversation is made
 @property (nonatomic, readonly, copy) NSString * _Nonnull participant;
 /// The last text message exchanged between the conversation parties
@@ -220,20 +229,15 @@ SWIFT_CLASS("_TtC18CPMessagingService14CPConversation")
 /// The url of the conversation
 @property (nonatomic, readonly, copy) NSString * _Nonnull url;
 /// Public interface to fetch messages from the server. This interface is a simplified version for getting the most recent message.
-/// \param count Maximum number of messages to fetch from the server.
+/// \param completion Code block to execute once the fetch has completed.
+///
+- (void)fetchMessagesWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
+/// Public interface to fetch messages from the server. This interface is a simplified version for getting the most recent message.
+/// \param fetchCriteria Criterias to query.
 ///
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchMessagesWithCount:(NSInteger)count completion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPMessage *> * _Nonnull))completion;
-/// Public interface to fetch messages from the server.
-/// This is an abstract method meant to be implemented by classes that derive from Conversation.
-/// \param start MessageId after which to start fetching messages. A nil value indicates start at most recent messageId.
-///
-/// \param count Maximum number of messages to fetch from the server.
-///
-/// \param completion Code block to execute once the fetch has completed.
-///
-- (void)fetchMessagesWithStart:(NSString * _Nullable)start count:(NSInteger)count completion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPMessage *> * _Nonnull))completion;
+- (void)fetchMessagesWithFetchOptions:(FetchOptions * _Nonnull)fetchOptions completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to delete a single message from the server.
 /// This is an abstract method meant to be implemented by classes that derive from Conversation.
 /// \param withId MessageID of message to delete.
@@ -318,7 +322,7 @@ SWIFT_CLASS("_TtC18CPMessagingService18CPChatConversation")
 ///
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchMessagesWithStart:(NSString * _Nullable)start count:(NSInteger)count completion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPMessage *> * _Nonnull))completion;
+- (void)fetchMessagesWithFetchOptions:(FetchOptions * _Nonnull)fetchOptions completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to delete a single message from the server.
 /// \param withId Unique identifier of the message to delete.
 ///
@@ -509,6 +513,7 @@ typedef SWIFT_ENUM(NSInteger, CPChatParticipantStatus, closed) {
   CPChatParticipantStatusDisconnected = 3,
 };
 
+@class FetchCriteria;
 
 /// This is an abstract base class used to access the common functionality of a messaging service such as SmsService or ChatService.
 SWIFT_CLASS("_TtC18CPMessagingService14MessageService")
@@ -524,7 +529,8 @@ SWIFT_CLASS("_TtC18CPMessagingService14MessageService")
 /// Public interface to fetch all conversation objects from the server.
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPConversation *> * _Nonnull))completion;
+- (void)fetchConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
+- (void)fetchConversationsWithFetchCriteria:(FetchCriteria * _Nonnull)withFetchCriteria completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to create a new message within the conversation.
 /// \param withText The text of the message.
 ///
@@ -587,25 +593,25 @@ SWIFT_CLASS("_TtC18CPMessagingService13CPChatService")
 /// Public interface to fetch only group conversation objects from the server.
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchGroupConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPConversation *> * _Nonnull))completion;
+- (void)fetchGroupConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to fetch only one-to-one conversation objects from the server.
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchOneToOneConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPConversation *> * _Nonnull))completion;
+- (void)fetchOneToOneConversationsWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to fetch one conversation object from the server.
 /// This would be used when refreshing a conversation after receiving a conversation:change event.
 /// \param withGroupID Group key to be used for getting the conversation.
 ///
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchConversationWithGroupID:(NSString * _Nonnull)withGroupID completion:(void (^ _Nonnull)(CPError * _Nullable, CPConversation * _Nullable))completion;
+- (void)fetchConversationWithGroupID:(NSString * _Nonnull)withGroupID completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to fetch one conversation object from the server.
 /// This would be used when refreshing a conversation after receiving a conversation:change event.
 /// \param withParticipant Participant key to be used for getting the conversation.
 ///
 /// \param completion Code block to execute once the fetch has completed.
 ///
-- (void)fetchConversationWithParticipant:(NSString * _Nonnull)withParticipant completion:(void (^ _Nonnull)(CPError * _Nullable, CPConversation * _Nullable))completion;
+- (void)fetchConversationWithParticipant:(NSString * _Nonnull)withParticipant completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Public interface to delete a conversation object from the server.
 /// \param conversation Conversation object representing the conversation to delete.
 ///
@@ -706,7 +712,7 @@ SWIFT_CLASS("_TtC18CPMessagingService10CPFilePart")
 
 /// Abstract base class for accessing common functionality and members of CPInboundMessage and CPOutboundMessage
 SWIFT_CLASS("_TtC18CPMessagingService9CPMessage")
-@interface CPMessage : NSObject
+@interface CPMessage : FetchedObjects
 /// Unique message identifier
 @property (nonatomic, readonly, copy) NSString * _Nonnull messageId;
 /// Time of creation of the message
@@ -857,16 +863,7 @@ SWIFT_CLASS("_TtC18CPMessagingService12CPSmsService")
 ///
 /// returns:
 /// Object of type SmsConversations derived from Conversation class.
-- (void)fetchConversationsWithParticipant:(NSString * _Nonnull)withParticipant completion:(void (^ _Nonnull)(CPError * _Nullable, NSArray<CPConversation *> * _Nonnull))completion;
-/// Public interface to fetch conversation between specified local address and remote address.
-/// \param withParticipant SIP URI of remote conversation participant.
-///
-/// \param localAddress SIP URI of local address of current user.
-///
-///
-/// returns:
-/// Object of type SmsConversation derived from Conversation class.
-- (void)fetchConversationWithParticipant:(NSString * _Nonnull)withParticipant localAddress:(NSString * _Nonnull)localAddress completion:(void (^ _Nonnull)(CPError * _Nullable, CPConversation * _Nullable))completion;
+- (void)fetchConversationsWithFetchCriteria:(FetchCriteria * _Nonnull)withFetchCriteria completion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
 /// Delegate method to get a service’s information
 ///
 /// returns:
@@ -926,6 +923,34 @@ typedef SWIFT_ENUM(NSInteger, CPUriFormat, closed) {
 /// Telephone
   CPUriFormatTel = 2,
 };
+
+
+SWIFT_CLASS("_TtC18CPMessagingService13FetchCriteria")
+@interface FetchCriteria : NSObject
+@property (nonatomic, copy) NSString * _Nullable localAddress;
+@property (nonatomic, copy) NSString * _Nullable participant;
+@property (nonatomic, strong) FetchOptions * _Nullable fetchOptions;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC18CPMessagingService12FetchOptions")
+@interface FetchOptions : NSObject
+@property (nonatomic) NSInteger max;
+@property (nonatomic, copy) NSString * _Nonnull next;
+@property (nonatomic) long long lastMessageTime;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC18CPMessagingService11FetchResult")
+@interface FetchResult : NSObject
+@property (nonatomic) BOOL hasNext;
+@property (nonatomic, copy) NSArray<FetchedObjects *> * _Nullable result;
+- (void)getNextWithCompletion:(void (^ _Nonnull)(CPError * _Nullable, FetchResult * _Nullable))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 
 #if __has_attribute(external_source_symbol)

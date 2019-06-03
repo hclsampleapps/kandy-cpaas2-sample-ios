@@ -180,6 +180,5 @@ extension SMSViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         print("print2")
-        inputTextView.text = ""
     }
 }

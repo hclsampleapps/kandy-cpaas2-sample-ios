@@ -12,7 +12,7 @@
 #import "CPRestResponseHandler.h"
 #import "SMRestResponse.h"
 #import "CPRestBody.h"
-@import CPUtilities;
+@import CPUtilities.Private;
 
 @interface CPRestResponseHandler()
 {
@@ -34,7 +34,7 @@
     if(self)
     {
         TAG = tag;
-        logManager = [CPLogManager getInstance];
+        logManager = [[CPConfig sharedInstance] logManager];
         completionBlock = completion;
         responseBodyName = responseBodyIdentifier;
     }
