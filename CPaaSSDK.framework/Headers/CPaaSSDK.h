@@ -17,4 +17,12 @@ FOUNDATION_EXPORT double CPaaSSDKVersionNumber;
 //! Project version string for CPaaSSDK.
 FOUNDATION_EXPORT const unsigned char CPaaSSDKVersionString[];
 
-
+#ifdef __OBJC__
+@import CPUtilities;
+@import CPAuthenticationService;
+@import CPMessagingService;
+@import CPAddressBookService;
+@import CPPresenceService;
+@import CPPushService;
+@import CPCallService;
+#endif
