@@ -29,3 +29,4 @@ FOUNDATION_EXPORT const unsigned char CPUtilitiesVersionString[];
 #import <CPUtilities/CPICEOptions.h>
 #import <CPUtilities/CPAudioSessionConfiguration.h>
 #import <CPUtilities/CPAudioCodecConfiguration.h>
+#import <CPUtilities/CPCallReceiveBandwidthLimit.h>

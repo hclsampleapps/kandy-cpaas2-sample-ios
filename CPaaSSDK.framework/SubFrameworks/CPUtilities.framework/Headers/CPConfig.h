@@ -21,6 +21,7 @@
 @class CPAudioCodecConfiguration;
 @class CPLogManager;
 @class CPCodecToReplace;
+@class CPCallReceiveBandwidthLimit;
 
 @protocol CPLoggingDelegate;
 
@@ -229,6 +230,13 @@ NS_ASSUME_NONNULL_BEGIN
  * @since 1.0.2
  */
 @property(nonatomic) BOOL  forceDisableMediaOnHold;
+
+/**
+ * Bandwidth limit of receiving media
+ *
+ * @since 1.7.0
+ */
+@property (nonatomic, strong) CPCallReceiveBandwidthLimit * _Nullable receiveBandwidthLimit;
 
 /**
  * This method returns (creates if necessary) singleton instance of Configuration class
