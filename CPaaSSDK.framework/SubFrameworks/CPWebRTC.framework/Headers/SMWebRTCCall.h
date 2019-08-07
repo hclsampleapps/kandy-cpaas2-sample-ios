@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 
 @class CPTurnCredential;
+@class CPCallReceiveBandwidthLimit;
 
 typedef struct wMediaState {
     BOOL localVideo;
@@ -123,6 +124,13 @@ typedef NS_ENUM(NSInteger, WRTCConnectionState) {
  * Indicates turnCredentials
  */
 @property (strong, nonatomic) CPTurnCredential *turnCredentials;
+
+/**
+ * Bandwidth limit of receiving media
+ *
+ * @since 4.6.1
+ */
+@property (nonatomic, strong, readonly) CPCallReceiveBandwidthLimit *receiveBandwidthLimit;
 
 /**
  * Constructor for WebRTCCall  class

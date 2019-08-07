@@ -105,6 +105,14 @@
 - (void) unHoldCall;
 
 /**
+ * @brief Method used by the application to transfer this call to another endpoint.
+ *
+ * @param newAddress address of the endpoint to replace this endpoint in the call
+ * @since 1.7.0
+ */
+- (void) transferCall: (CPUriAddress * _Nonnull) newAddress;
+
+/**
  *  Inserts Dual Tone Multi Frequency Signal to sending queue and returns the success
  * @param tone character value of DTMF tone. Can only be 0,1...,9,*,#,a,b,c,d,A,B,C,D;
  * @return YES if tone can be successfully inserted to queue otherwise NO

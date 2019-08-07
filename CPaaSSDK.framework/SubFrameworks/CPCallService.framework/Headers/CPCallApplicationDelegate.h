@@ -254,6 +254,23 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void) unHoldCallFailed:(id<CPCallDelegate>) call withError:(CPError *)error;
 
+/**
+ * Method invoked when attempt to transfer a call has succeeded.
+ * @param call performed transfer call successfully
+ * @see [CallDelegate transferCall:]
+ * @since 1.7.0
+ */
+- (void) transferCallSucceed:(id<CPCallDelegate>)call;
+
+/**
+ * Method invoked when attempt to transfer a call has failed.
+ * @param call couldn't made transferring
+ * @param error reason of the failure
+ * @see [CallDelegate transferCall:]
+ * @since 1.7.0
+ */
+- (void) transferCallFailed:(id<CPCallDelegate>)call withError:(CPError*)error;
+
 @end
 
 NS_ASSUME_NONNULL_END
