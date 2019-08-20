@@ -57,8 +57,14 @@ class DashboardViewController: BaseViewController, UICollectionViewDataSource,UI
         else if indexPath.item == 1 {
             self.navigateToChat()
         }
+        else if indexPath.item == 2 {
+            self.navigateToVoiceVideo()
+        }
         else if indexPath.item == 3 {
             self.navigateToAddressbook()
+        }
+        else if indexPath.item == 4 {
+           // self.navigateToPresence()
         }
         else{
             
@@ -120,6 +126,12 @@ extension DashboardViewController {
 
     func navigateToAddressbook() {
         let vc  = AddressDirectoryViewController(nibName:"AddressDirectoryViewController",bundle:nil)
+        vc.cpaas = self.cpaas
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func navigateToVoiceVideo() {
+        let vc  = VoiceVideoViewController(nibName:"VoiceVideoViewController",bundle:nil)
         vc.cpaas = self.cpaas
         self.navigationController?.pushViewController(vc, animated: true)
     }

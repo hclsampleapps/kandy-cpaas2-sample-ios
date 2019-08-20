@@ -4,7 +4,7 @@ Sample app of CPaaS2 modules (Call, SMS, Chat, Presence, Address book)
 ## Introduction
 It is a sample app where CPaaS2 APIs are used to make the following modules
 
-- [ ] Call
+- [x] Call
 - [x] SMS
 - [x] Chat
 - [ ] Presence
