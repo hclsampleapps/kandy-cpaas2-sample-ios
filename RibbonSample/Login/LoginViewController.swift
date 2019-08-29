@@ -48,7 +48,7 @@ class LoginViewController: BaseViewController {
         self.password_Field.text = "Test@123" //Test@123"
         self.baseUrl_Field.text = "oauth-cpaas.att.com" ////"nvs-cpaas-oauth.kandy.io"
 
-        self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "LOGIN")
+        self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "Password Grant")
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         changeViewLayout()
@@ -242,8 +242,12 @@ extension LoginViewController {
     }
     
     func navigateToDashboard() {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let vc  = DashboardViewController(nibName:"DashboardViewController",bundle:nil)
+        
+        let navigationController = UINavigationController.init(rootViewController: vc)
+        
         vc.cpaas = self.cpaas
-        self.navigationController?.pushViewController(vc, animated: true)
+        appDelegate?.window?.rootViewController = navigationController
     }
 }

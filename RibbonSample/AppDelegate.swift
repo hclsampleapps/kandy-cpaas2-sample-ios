@@ -13,13 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let tabBarController = UITabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        addLoginPageToWindow()
+        addTabBarController()
 
         self.window?.makeKeyAndVisible()
 
@@ -96,10 +96,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    func addLoginPageToWindow() -> Void {
+    func addTabBarController() -> Void {
         let loginViewController  = LoginViewController(nibName:"LoginViewController",bundle:nil)
         let loginViewControllers = UINavigationController.init(rootViewController: loginViewController)
-        window?.rootViewController = loginViewControllers
+        loginViewControllers.tabBarItem = UITabBarItem(
+            title: "User",
+            image: nil,
+            tag: 1)
+        
+        let projectLoginViewController = ProjectLoginViewController(nibName:"ProjectLoginViewController",bundle:nil)
+        let projectLoginViewControllers = UINavigationController.init(rootViewController: projectLoginViewController)
+        projectLoginViewControllers.tabBarItem = UITabBarItem(
+            title: "Project",
+            image: nil,
+            tag: 2)
+        
+        let controllers = [loginViewControllers,projectLoginViewControllers]
+        tabBarController.viewControllers = controllers
+        window?.rootViewController = tabBarController
     }
 
 }

@@ -16,8 +16,6 @@ class Persense_Handler: CPPresenceDelegate {
     var accessToken : String!
     var lifeTime : Int = 600
     var channelInfo : String!
-    let sourceNumber: String = "+16504256799"
-    let destinationNumber: String = "+12072039274"
     let serverURL: String = "https://nvs-cpaas-oauth.kandy.io/cpaas/auth/v1/token"
     var service: CPPresenceService?
     var presentityList: CPPresentityList? = nil
@@ -74,7 +72,7 @@ class Persense_Handler: CPPresenceDelegate {
     
     func setConfig() {
         let configuration = CPConfig.sharedInstance()
-        configuration.restServerUrl = "nvs-cpaas-oauth.kandy.io"
+        configuration.restServerUrl = "oauth-cpaas.att.com"
         configuration.useSecureConnection = true
     }
     

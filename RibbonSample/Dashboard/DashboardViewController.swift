@@ -13,7 +13,7 @@ class DashboardViewController: BaseViewController, UICollectionViewDataSource,UI
 
     @IBOutlet weak var collectioVw: UICollectionView!
     
-    var mainContens = ["SMS", "Chat", "Voice/Video Call", "Addressbook", "Presence", "Multimedia Chat"]
+    var mainContens = ["SMS", "Chat", "Voice/Video Call", "Addressbook"]
     let sourceNumber: String = "+19492657842"
     let destinationNumber: String = "+19492657843"
     var cpaas: CPaaS!
@@ -64,7 +64,7 @@ class DashboardViewController: BaseViewController, UICollectionViewDataSource,UI
             self.navigateToAddressbook()
         }
         else if indexPath.item == 4 {
-           // self.navigateToPresence()
+           self.navigateToPresence()
         }
         else{
             
@@ -131,6 +131,12 @@ extension DashboardViewController {
     }
     
     func navigateToVoiceVideo() {
+        let vc  = VoiceVideoViewController(nibName:"VoiceVideoViewController",bundle:nil)
+        vc.cpaas = self.cpaas
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func navigateToPresence() {
         let vc  = VoiceVideoViewController(nibName:"VoiceVideoViewController",bundle:nil)
         vc.cpaas = self.cpaas
         self.navigationController?.pushViewController(vc, animated: true)
