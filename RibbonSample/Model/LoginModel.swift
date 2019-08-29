@@ -18,6 +18,11 @@ class LoginModel: NSObject {
 }
 
 
+class ProjectLoginModel: NSObject {
+    var privateprojectkey:String?
+    var privateprojectsecret:String?
+}
+
 class AuthenticationModel: Codable,JSONDecodable {
     
     var id_token:String?

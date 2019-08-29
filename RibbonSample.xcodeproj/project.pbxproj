@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04237EC9F2B387035AE7CBC2 /* Pods_RibbonSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5181B91009203AB65BA7897 /* Pods_RibbonSampleUITests.framework */; };
+		1809F485230F28FF0037F78F /* ProjectLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809F483230F28FF0037F78F /* ProjectLoginViewController.swift */; };
+		1809F486230F28FF0037F78F /* ProjectLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809F484230F28FF0037F78F /* ProjectLoginViewController.xib */; };
 		18182811230C6D5F00181B4A /* VoiceVideoCall_Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818280A230C6D5F00181B4A /* VoiceVideoCall_Handler.swift */; };
 		18182812230C6D5F00181B4A /* OutgoingCallCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818280B230C6D5F00181B4A /* OutgoingCallCustomView.swift */; };
 		18182813230C6D5F00181B4A /* IncomingCallCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818280C230C6D5F00181B4A /* IncomingCallCustomView.xib */; };
@@ -133,6 +135,8 @@
 
 /* Begin PBXFileReference section */
 		022322E34AD7259AB2D40F7B /* Pods-RibbonSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RibbonSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RibbonSampleUITests/Pods-RibbonSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1809F483230F28FF0037F78F /* ProjectLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoginViewController.swift; sourceTree = "<group>"; };
+		1809F484230F28FF0037F78F /* ProjectLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectLoginViewController.xib; sourceTree = "<group>"; };
 		1818280A230C6D5F00181B4A /* VoiceVideoCall_Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceVideoCall_Handler.swift; sourceTree = "<group>"; };
 		1818280B230C6D5F00181B4A /* OutgoingCallCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallCustomView.swift; sourceTree = "<group>"; };
 		1818280C230C6D5F00181B4A /* IncomingCallCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncomingCallCustomView.xib; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 			children = (
 				302FD3ED224A3ECB00E5C7C3 /* LoginViewController.swift */,
 				302FD3EC224A3ECB00E5C7C3 /* LoginViewController.xib */,
+				1809F483230F28FF0037F78F /* ProjectLoginViewController.swift */,
+				1809F484230F28FF0037F78F /* ProjectLoginViewController.xib */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -666,6 +672,7 @@
 				181AFD9A225532320055386F /* Someone'sBubbleViewCell.xib in Resources */,
 				30951E3C224A2D68002F637C /* Assets.xcassets in Resources */,
 				30951E37224A2D67002F637C /* Main.storyboard in Resources */,
+				1809F486230F28FF0037F78F /* ProjectLoginViewController.xib in Resources */,
 				1820334F22625A9600E77FEB /* DirectoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,6 +815,7 @@
 				30951E3A224A2D67002F637C /* RibbonSample.xcdatamodeld in Sources */,
 				1820334422625A9600E77FEB /* AddressListViewController.swift in Sources */,
 				181AFD83225530210055386F /* SMSViewController.swift in Sources */,
+				1809F485230F28FF0037F78F /* ProjectLoginViewController.swift in Sources */,
 				302FD401224A3F7A00E5C7C3 /* ColorConstants.swift in Sources */,
 				308DC6C3224A8EED005DD34F /* DashboardViewController.swift in Sources */,
 				302FD3FD224A3F7A00E5C7C3 /* LoaderClass.swift in Sources */,
