@@ -1,10 +1,3 @@
-//
-//  Call_Handler.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Viviksha on 21/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
 
 import Foundation
 import CPaaSSDK
@@ -65,7 +58,6 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
         let destUserId: String = destAddress[0]
         let destDomain: String = destAddress[1]
 
-//        let originator = CPUriAddress(username: "rajesh0530", withDomain: "kandy.pass.5gt3.att.com")
         let term = CPUriAddress(username: destUserId, withDomain: destDomain)
         
         service?.createOutGoingCall(self, andTerminator: term, completion: { (call, error) in
@@ -75,15 +67,7 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
             }
             call?.establishCall(isVideo)
         })
-        
-        
-//        service?.createOutGoingCall(self, andOriginator: originator, andTerminator: term, completion: { (call, error) in
-//            if let error = error {
-//                print("Call Couldn't be created - Error: \(error.localizedDescription)")
-//                return
-//            }
-//            call?.establishCall(true)
-//        })
+
     }
     
     func incomingCall(_ call: CPIncomingCallDelegate) {

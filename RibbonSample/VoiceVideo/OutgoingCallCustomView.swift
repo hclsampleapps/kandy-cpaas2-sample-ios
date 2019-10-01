@@ -1,10 +1,3 @@
-//
-//  OutgoingCallCustomView.swift
-//  RibbonSample
-//
-//  Created by Rajesh Yadav on 06/07/19.
-//  Copyright © 2019 RJ. All rights reserved.
-//
 
 import UIKit
 

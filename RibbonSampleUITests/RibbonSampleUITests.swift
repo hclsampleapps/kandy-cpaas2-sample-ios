@@ -1,10 +1,3 @@
-//
-//  RibbonSampleUITests.swift
-//  RibbonSampleUITests
-//
-//  Created by Rajesh Yadav on 26/03/19.
-//  Copyright © 2019 RJ. All rights reserved.
-//
 
 import XCTest
 
