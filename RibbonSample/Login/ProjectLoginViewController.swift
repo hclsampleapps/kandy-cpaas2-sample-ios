@@ -1,10 +1,3 @@
-//
-//  ProjectLoginViewController.swift
-//  RibbonSample
-//
-//  Created by Viviksha on 23/08/19.
-//  Copyright © 2019 RJ. All rights reserved.
-//
 
 import UIKit
 import CPaaSSDK

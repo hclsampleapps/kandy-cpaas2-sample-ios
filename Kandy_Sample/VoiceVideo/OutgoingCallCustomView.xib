@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Lpg-Yt-ccL" customClass="OutgoingCallCustomView" customModule="RibbonSample" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iya-wH-Igo">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A5y-IO-TYN">
+                    <rect key="frame" x="170" y="170" width="130" height="130"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN9-lI-hWg">
+                    <rect key="frame" x="16" y="32" width="288" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2Ow-cZ-nur"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tLo-6e-lG1">
+                    <rect key="frame" x="0.0" y="483" width="320" height="85"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzm-Ur-gMa">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                            <state key="normal" image="reject-call"/>
+                            <connections>
+                                <action selector="endCallButtonTapped:" destination="Lpg-Yt-ccL" eventType="touchUpInside" id="xgA-2a-haN"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="uZG-w9-p5F"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="6HI-H5-hot" firstAttribute="bottom" secondItem="Iya-wH-Igo" secondAttribute="bottom" id="18L-8T-Ia7"/>
+                <constraint firstItem="6HI-H5-hot" firstAttribute="trailing" secondItem="tLo-6e-lG1" secondAttribute="trailing" id="9zc-8L-SFR"/>
+                <constraint firstItem="Iya-wH-Igo" firstAttribute="top" secondItem="Lpg-Yt-ccL" secondAttribute="top" id="Grh-GJ-zou"/>
+                <constraint firstItem="GN9-lI-hWg" firstAttribute="leading" secondItem="6HI-H5-hot" secondAttribute="leading" constant="16" id="LU6-y0-yW9"/>
+                <constraint firstItem="tLo-6e-lG1" firstAttribute="leading" secondItem="Lpg-Yt-ccL" secondAttribute="leading" id="deS-cd-wRR"/>
+                <constraint firstItem="6HI-H5-hot" firstAttribute="trailing" secondItem="GN9-lI-hWg" secondAttribute="trailing" constant="16" id="doC-98-vp6"/>
+                <constraint firstItem="GN9-lI-hWg" firstAttribute="top" secondItem="6HI-H5-hot" secondAttribute="top" constant="12" id="moo-x9-2zD"/>
+                <constraint firstItem="6HI-H5-hot" firstAttribute="trailing" secondItem="Iya-wH-Igo" secondAttribute="trailing" id="nDE-L4-As2"/>
+                <constraint firstItem="Iya-wH-Igo" firstAttribute="leading" secondItem="Lpg-Yt-ccL" secondAttribute="leading" id="q0T-qq-3KY"/>
+                <constraint firstItem="6HI-H5-hot" firstAttribute="bottom" secondItem="tLo-6e-lG1" secondAttribute="bottom" id="tXQ-OO-jp5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="6HI-H5-hot"/>
+            <connections>
+                <outlet property="endCall" destination="bzm-Ur-gMa" id="1oG-6i-oK6"/>
+                <outlet property="lblDestNumber" destination="GN9-lI-hWg" id="KIP-Kp-p8b"/>
+                <outlet property="localVideoViewHandler" destination="A5y-IO-TYN" id="aYd-cz-9pC"/>
+                <outlet property="remoteVideoViewHandler" destination="Iya-wH-Igo" id="Adx-2C-IMv"/>
+            </connections>
+            <point key="canvasLocation" x="-1091" y="91"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="reject-call" width="85.333335876464844" height="85.333335876464844"/>
+    </resources>
+</document>
