@@ -170,7 +170,7 @@ extension LoginViewController{
                         
                         self.idToken = loginModel.id_token
                         self.accessToken = loginModel.access_token
-
+                        UserDefaultsClass.sharedInstance.setIsUserLoggedIn(isLoggedIn: true)
                         self.setConfig()
                         self.subscribeServices()
                         self.setToken()

@@ -23,6 +23,15 @@ class GlobalFunctions: NSObject {
         let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
         return documentsDirectoryPath
     }
+    
+    func getStatusColor(status:String) -> UIColor
+    {
+        if status == "Available" {return .green}
+        else if status == "Busy"{return .red}
+        else if status == "Away"{return .red}
+        else if status == "Vcation" {return .red}
+        else {return .yellow}
+    }
 }
 
 

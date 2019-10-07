@@ -13,7 +13,7 @@ class DashboardViewController: BaseViewController, UICollectionViewDataSource,UI
 
     @IBOutlet weak var collectioVw: UICollectionView!
     
-    var mainContens = ["SMS", "Chat", "Voice/Video Call", "Addressbook"]
+    var mainContens = ["SMS", "Chat", "Voice/Video Call", "Addressbook","Presence"]
     let sourceNumber: String = "+19492657842"
     let destinationNumber: String = "+19492657843"
     var cpaas: CPaaS!
@@ -137,7 +137,7 @@ extension DashboardViewController {
     }
     
     func navigateToPresence() {
-        let vc  = VoiceVideoViewController(nibName:"VoiceVideoViewController",bundle:nil)
+        let vc  = PresenceViewController(nibName:"PresenceViewController",bundle:nil)
         vc.cpaas = self.cpaas
         self.navigationController?.pushViewController(vc, animated: true)
     }
