@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Viviksha on 06/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
 
 import UIKit
 import Photos

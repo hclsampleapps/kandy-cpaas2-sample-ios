@@ -1,10 +1,3 @@
-//
-//  DirectoryModule.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Rajesh Yadav on 15/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
 
 import Foundation
 import CPaaSSDK

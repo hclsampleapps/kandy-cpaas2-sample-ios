@@ -1,10 +1,3 @@
-//
-//  SMSViewController.swift
-//  RibbonSample
-//
-//  Created by Rajesh Yadav on 29/03/19.
-//  Copyright © 2019 RJ. All rights reserved.
-//
 
 import UIKit
 import CPaaSSDK
