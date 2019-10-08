@@ -1,10 +1,3 @@
-//
-//  SMS_Handler.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Rahul on 12/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
 
 import Foundation
 import CPaaSSDK

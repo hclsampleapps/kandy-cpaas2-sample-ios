@@ -12,7 +12,6 @@ protocol AddressBookAddUpdateDelegate {
     func updatedContact(isSuccess: Bool)
 }
 
-
 class AddressBookModule: NSObject  {
     var cpaas: CPaaS!
     
@@ -168,42 +167,3 @@ class AddressBookModule: NSObject  {
     
 
 }
-
-
-
-
-/*
- func setToken() {
- self.authentication.connect(idToken: "self.idToken", accessToken: "self.accessToken", lifetime: "self.lifeTime") { (error, channelInfo) in
- if let error = error {
- print(error.localizedDescription)
- } else {
- self.channelInfo = channelInfo!
- print("Channel Info " + self.channelInfo)
- 
- 
- self.fetchContactList()
- //self.createContact()
- 
- self.updateContact(listId: "abhishekk@globaleuro.net")
- 
- let entity = CPContact(contactId: "iSUkkMtZ3N")
- /// Set relevant informations
- entity.mobile = "+12010000002"
- entity.email = "rahul@virtual-email.com"
- entity.firstName = "Rahul"
- entity.lastName = "Gupta"
- entity.buddy = true
- entity.homePhoneNumber = "+12010000003"
- entity.businessPhoneNumber = "+12010000004"
- 
- //self.deleteSingleContact(contact:entity)
- //self.getSingleContact(contactId:"iSUkkMtZ3N")
- 
- //self.getAddressbookLists()
- 
- //                self.searchContactInDirectory(searchText: "k", selectedFilterKeyType:.lastname ,selectedOrderType: .ascending, selectedSortType:.name)
- }
- }
- }
- */

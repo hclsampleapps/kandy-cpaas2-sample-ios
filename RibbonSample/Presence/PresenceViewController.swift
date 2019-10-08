@@ -1,10 +1,3 @@
-//
-//  PresenceViewController.swift
-//  RibbonSample
-//
-//  Created by Kunal Nagpal on 15/09/19.
-//  Copyright © 2019 RJ. All rights reserved.
-//
 
 import UIKit
 import CPaaSSDK
@@ -20,21 +13,29 @@ class PresenceViewController: BaseViewController,PresenceProtocol {
     let activityTypesArray = ["Available","Unknown", "Other", "Away", "Busy", "Lunch", "OnThePhone", "Vacation"]
     var prentiyList : CPPresentityList?
     var prenties = [CPPresentity]()
-    
-    
     @IBOutlet weak var groupCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "Presence")
         presence_Handler.cpaas = self.cpaas
+        presence_Handler.subscribeServices()
         presence_Handler.delegate = self;
-        //status_pickerView.isHidden = true
         status_pickerView.delegate = self
         status_pickerView.dataSource = self
         // Do any additional setup after loading the view.
         presence_Handler.fetchAllPresentities()
         registerNib()
-        
+        setStatus()
+    }
+    
+    func setStatus() {
+        let currentStatus : AnyObject? = UserDefaults.standard.object(forKey: "CurrentStatus") as AnyObject?
+        let currentStatusColour : AnyObject? = UserDefaults.standard.object(forKey: "CurrentStatus") as AnyObject?
+        if(currentStatus != nil && currentStatusColour != nil) {
+            status_lbl.text = currentStatus as? String
+            status_imgView.backgroundColor = GlobalFunctions.sharedInstance.getStatusColor(status: currentStatusColour as! String)
+        }
     }
     
     private func registerNib(){
@@ -46,10 +47,12 @@ class PresenceViewController: BaseViewController,PresenceProtocol {
     
     func updateUserStatus(status: String) {
         status_lbl.text = status
+        UserDefaults.standard.set(status, forKey: "CurrentStatus")
     }
     
     func updateUserStatusColor(status: String) {
         status_imgView.backgroundColor = GlobalFunctions.sharedInstance.getStatusColor(status: status)
+        UserDefaults.standard.set(status, forKey: "CurrentStatusColor")
     }
     
     @IBAction func updateStatus(_ sender: Any) {
@@ -65,8 +68,6 @@ class PresenceViewController: BaseViewController,PresenceProtocol {
     }
     
     private func updateUserSelectedStatus(userStatus: String){
-        //status_pickerView.isHidden = true
-       // status_lbl.text = ""
         status_imgView.backgroundColor = GlobalFunctions.sharedInstance.getStatusColor(status: userStatus)
         presence_Handler.updateStatus(statusToUpdate: userStatus)
     }
@@ -131,11 +132,8 @@ extension PresenceViewController : UICollectionViewDataSource, UICollectionViewD
         return CGSize(width: self.view.frame.size.width, height: 30.0)
     }
     
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
 }
