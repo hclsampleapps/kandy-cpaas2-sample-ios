@@ -8,7 +8,7 @@ protocol IncomingCallDelegate {
 }
 
 class IncomingCallCustomView: UIView {
-
+    
     @IBOutlet var localVideoViewHandler: UIView!
     @IBOutlet var remoteVideoViewHandler: UIView!
     @IBOutlet weak var lblDestNumber: UILabel!
@@ -17,10 +17,10 @@ class IncomingCallCustomView: UIView {
     @IBOutlet var videoCall: UIButton!
     
     var delegateIncomingCall:IncomingCallDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
     
     @IBAction func rejectCallButtonTapped(_ sender: UIButton) {

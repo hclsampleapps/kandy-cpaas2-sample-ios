@@ -3,27 +3,27 @@ import UIKit
 import CPaaSSDK
 
 class DirectoryViewController: UIViewController, DirectoryModuleDelegate {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tblVw_Directory: UITableView!
     @IBOutlet weak var btn_Name: UIButton!
     @IBOutlet weak var btn_FirstName: UIButton!
     @IBOutlet weak var btn_LastName: UIButton!
     @IBOutlet weak var btn_PhoneNum: UIButton!
-
+    
     @IBOutlet weak var viewDirectory: UIView!
-
+    
     var cpaas: CPaaS!
-
+    
     var filtered:[DirectoryBO] = []
-
+    
     var directory_Handler = DirectoryModule()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tblVw_Directory.register(UINib(nibName: "DirectoryTableViewCell", bundle: nil), forCellReuseIdentifier: "DirectoryTableViewCell")
-//        self.tblVw_Directory.isHidden = true
+        //        self.tblVw_Directory.isHidden = true
         
         self.btnFilterTapped(sender: btn_Name)
         self.searchBar.placeholder = NSLocalizedString("Search text", comment: "")
@@ -126,7 +126,7 @@ extension DirectoryViewController : UISearchBarDelegate {
         }
         
         LoaderClass.sharedInstance.showActivityIndicator()
-
+        
         if btn_Name.isSelected{
             directory_Handler.searchContactInDirectory(searchText: searchBar.text ?? "", selectedFilterKeyType:.name ,selectedOrderType: .ascending, selectedSortType:.name)
         }else if btn_FirstName.isSelected{

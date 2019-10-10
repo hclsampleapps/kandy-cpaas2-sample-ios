@@ -10,17 +10,17 @@ class AddressListViewController: BaseViewController, AddressBookDelegate {
     
     var cpaas: CPaaS!
     var address_Handler = AddressBookModule()
-
+    
     private var roundButton = UIButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tblVw.register(UINib(nibName: "AddressListTableViewCell", bundle: nil), forCellReuseIdentifier: "AddressListTableViewCell")
         //        self.lblNoRecord.isHidden = true
         
     }
-
+    
     func fetchContactList(array: [AddressbookBO]) {
         arrayAddressbook = array
         self.tblVw.reloadData()
@@ -31,12 +31,12 @@ class AddressListViewController: BaseViewController, AddressBookDelegate {
         if isSuccess{
             LoaderClass.sharedInstance.showActivityIndicator()
             address_Handler.fetchContactList()
-
+            
         }else{
             Alert.instance.showAlert(msg: "Unable to delete Contact. Please try again later.", title: "", sender: self)
         }
     }
-
+    
     
     override func viewWillAppear(_ animated: Bool) {
         createFloatingButton()
@@ -45,7 +45,7 @@ class AddressListViewController: BaseViewController, AddressBookDelegate {
         address_Handler.cpaas = self.cpaas
         address_Handler.delegate_AddressBook = self
         address_Handler.fetchContactList()
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,12 +93,12 @@ class AddressListViewController: BaseViewController, AddressBookDelegate {
     
     @objc func plusRoundButtonTapped(sender: UIButton) {
         let vc  = AddressbookViewController(nibName:"AddressbookViewController",bundle:nil)
-//        vc.addressbook = model
+        //        vc.addressbook = model
         vc.isToUpdate = false
         vc.cpaas = self.cpaas
         self.navigationController?.pushViewController(vc, animated: true)
     }
-
+    
 }
 
 
@@ -110,7 +110,7 @@ extension AddressListViewController:UITableViewDelegate,UITableViewDataSource{
         let model = arrayAddressbook[indexPath.row]
         cell.lblName.text = model.firstName + " " + model.lastName
         cell.lblEmail.text = model.email
-                
+        
         return cell
     }
     
@@ -134,7 +134,7 @@ extension AddressListViewController:UITableViewDelegate,UITableViewDataSource{
         vc.isToUpdate = true
         vc.cpaas = self.cpaas
         self.navigationController?.pushViewController(vc, animated: true)
-
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

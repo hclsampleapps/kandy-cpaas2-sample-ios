@@ -14,7 +14,7 @@ class OutgoingCallCustomView: UIView {
     var isAudioCall: Bool = true
     
     var delegateOutgoingCall:OutgoingCallDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

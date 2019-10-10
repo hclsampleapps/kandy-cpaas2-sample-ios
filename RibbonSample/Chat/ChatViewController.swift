@@ -7,52 +7,52 @@ class ChatViewController: BaseViewController, ChatDelegate {
     
     @IBOutlet weak var tbBubbleDemo: LynnBubbleTableView!
     @IBOutlet weak var destinationNumber: UITextField!
-
+    
     @IBOutlet weak var chatInputView: UIView!
     @IBOutlet weak var inputTextView: KMPlaceholderTextView!
     var arrChatTest:Array<LynnBubbleData> = []
     var cpaas: CPaaS!
     var chat_Handler = Chat_Handler()
-
+    
     var userMe = LynnUserData(userUniqueId: "123", userNickName: "", userProfileImage: nil, additionalInfo: nil)//UIImage(named: "ico_girlprofile")
     var userSomeone = LynnUserData(userUniqueId: "234", userNickName: "", userProfileImage: UIImage(named: "ico_girlprofile"), additionalInfo: nil)
-
+    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "CHAT")
-
-//        tbBubbleDemo.bubbleDelegate = self
+        
+        //        tbBubbleDemo.bubbleDelegate = self
         tbBubbleDemo.bubbleDataSource = self
-
+        
         destinationNumber.placeholder = "[userId]@[domain]"
-//        destinationNumber.text = "amitg@hcl.z9ht.att.com"
+        //        destinationNumber.text = "amitg@hcl.z9ht.att.com"
         
         chat_Handler.cpaas = self.cpaas
         chat_Handler.subscribeServices()
         chat_Handler.delegate_CHAT = self
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
         inputTextView.layer.cornerRadius = 4.0
         inputTextView.layer.borderColor = UIColor.gray.cgColor
         inputTextView.layer.borderWidth = 0.8
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
-
-
+    
+    
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if NetworkState.isConnected() {
             if destinationNumber.isEmpty(){
@@ -86,7 +86,7 @@ class ChatViewController: BaseViewController, ChatDelegate {
             print("inboundMessageReceived");
             
             self.userSomeone.userNickName = senderNumber
-
+            
             let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: message, messageDate: Date())
             self.arrChatTest.append(bubbleData)
             self.tbBubbleDemo.reloadData()
@@ -105,7 +105,7 @@ class ChatViewController: BaseViewController, ChatDelegate {
             DispatchQueue.main.async { () -> Void in
                 LoaderClass.sharedInstance.hideOverlayView()
                 self.userSomeone.userNickName = self.destinationNumber.text
-
+                
                 let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userMe, dataOwner: .me, message: self.inputTextView.text, messageDate: Date())
                 self.arrChatTest.append(bubbleData)
                 self.tbBubbleDemo.reloadData()
@@ -139,7 +139,7 @@ class ChatViewController: BaseViewController, ChatDelegate {
         self.chatInputView.superview?.setNeedsLayout()
     }
     
-
+    
 }
 
 extension ChatViewController: LynnBubbleViewDataSource {

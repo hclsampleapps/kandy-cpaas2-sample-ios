@@ -27,12 +27,12 @@ class ProjectLoginViewController: BaseViewController {
             return self.cpaas.authenticationService
         }
     }
-
+    
     override func viewDidLoad() {
-       super.viewDidLoad()
-       self.privateprojectkey_Field.text = "PRIV-nesonukuv.34mv.nesoproject1"
-       self.baseUrl_Field.text = "oauth-cpaas.att.com" ////"nvs-cpaas-oauth.kandy.io"
-       self.privateprojectsecret_Field.text =  "8fe371a7-8158-4800-bb98-ca3ed7291816"
+        super.viewDidLoad()
+        self.privateprojectkey_Field.text = "PRIV-nesonukuv.34mv.nesoproject1"
+        self.baseUrl_Field.text = "oauth-cpaas.att.com" ////"nvs-cpaas-oauth.kandy.io"
+        self.privateprojectsecret_Field.text =  "8fe371a7-8158-4800-bb98-ca3ed7291816"
         
         self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "Client Credentials")
         NotificationCenter.default.addObserver(self, selector: #selector(ProjectLoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -114,7 +114,7 @@ extension ProjectLoginViewController {
     }
     
     func subscribeServices() {
-     self.cpaas = CPaaS(services:[CPServiceInfo(type: .sms, push: true), CPServiceInfo(type: .chat, push: true),CPServiceInfo(type: .call, push: true), CPServiceInfo(type: .presence, push: false), CPServiceInfo(type: .addressbook, push: true)])
+        self.cpaas = CPaaS(services:[CPServiceInfo(type: .sms, push: true), CPServiceInfo(type: .chat, push: true),CPServiceInfo(type: .call, push: true), CPServiceInfo(type: .presence, push: false), CPServiceInfo(type: .addressbook, push: true)])
     }
     
     func setToken() {
@@ -122,7 +122,7 @@ extension ProjectLoginViewController {
         
         print(self.idToken);
         print(self.accessToken);
-
+        
         self.authentication.connect(idToken: self.idToken, accessToken: self.accessToken, lifetime: self.lifeTime) { (error, channelInfo) in
             
             if let error = error {
@@ -151,14 +151,14 @@ extension ProjectLoginViewController {
         
         vc.cpaas = self.cpaas
         appDelegate?.window?.rootViewController = navigationController
-}
+    }
 }
 
 extension ProjectLoginViewController{
     func changeViewLayout() {
-         privateprojectkey_View.layer.cornerRadius = 4.0
-         privateprojectkey_View.layer.borderColor = UIColor.gray.cgColor
-         privateprojectkey_View.layer.borderWidth = 0.8
+        privateprojectkey_View.layer.cornerRadius = 4.0
+        privateprojectkey_View.layer.borderColor = UIColor.gray.cgColor
+        privateprojectkey_View.layer.borderWidth = 0.8
         
         privateprojectsecret_View.layer.cornerRadius = 4.0
         privateprojectsecret_View.layer.borderColor = UIColor.gray.cgColor

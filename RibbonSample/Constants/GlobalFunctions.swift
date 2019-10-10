@@ -10,11 +10,20 @@ class GlobalFunctions: NSObject {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
-
+    
     func getDocumentDirectory() -> NSURL{
         let documentsDirectoryPathString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         let documentsDirectoryPath = NSURL(string: documentsDirectoryPathString)!
         return documentsDirectoryPath
+    }
+    
+    func getStatusColor(status:String) -> UIColor
+    {
+        if status == "Available" {return .green}
+        else if status == "Busy"{return .red}
+        else if status == "Away"{return .red}
+        else if status == "Vcation" {return .red}
+        else {return .yellow}
     }
 }
 

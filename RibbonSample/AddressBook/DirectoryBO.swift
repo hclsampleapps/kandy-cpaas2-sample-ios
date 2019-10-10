@@ -2,13 +2,13 @@
 import UIKit
 
 class DirectoryBO: NSObject {
-     var photoUrl: String!
-     var name: String!
-     var firstName: String!
-     var lastName: String!
-     var userId: String!
-     var email: String!
-     var isBuddy:Bool = false
+    var photoUrl: String!
+    var name: String!
+    var firstName: String!
+    var lastName: String!
+    var userId: String!
+    var email: String!
+    var isBuddy:Bool = false
 }
 
 class AddressbookBO: NSObject {

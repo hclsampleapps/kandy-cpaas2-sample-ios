@@ -1,11 +1,3 @@
-//
-//  Chat_Handler.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Rahul on 13/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
-
 import Foundation
 import CPaaSSDK
 
@@ -66,7 +58,7 @@ class Chat_Handler : CPChatDelegate {
     func subscribeServices() {
         self.cpaas.chatService!.delegate = self
     }
-
+    
     func sendMessage(message: String) {
         if let conversation = self.cpaas.chatService!.createConversation(withParticipant: self.destinationNumber) {
             conversation.send(withText: message){

@@ -1,10 +1,3 @@
-//
-//  SMS_Handler.swift
-//  Ribbon_SDK_Integration
-//
-//  Created by Rahul on 12/03/19.
-//  Copyright © 2019 Ribbon. All rights reserved.
-//
 
 import Foundation
 import CPaaSSDK
@@ -18,7 +11,7 @@ protocol SMSDelegate {
 
 class SMS_Handler: CPSmsDelegate {
     var cpaas: CPaaS!
-
+    
     var sourceNumber: String!
     var destinationNumber: String!
     
@@ -27,13 +20,13 @@ class SMS_Handler: CPSmsDelegate {
             return self.cpaas.authenticationService
         }
     }
-
+    
     var delegate_SMS:SMSDelegate?
     
-
+    
     init() {
         
-        }
+    }
     
     // MARK: SmsDelegate methods
     func inboundMessageReceived(message:CPInboundMessage) {
@@ -59,9 +52,9 @@ class SMS_Handler: CPSmsDelegate {
     func subscribeServices() {
         self.cpaas.smsService!.delegate = self
     }
-
+    
     func sendMessage(message: String) {
-
+        
         if let conversation = self.cpaas.smsService!.createConversation(fromAddress: self.sourceNumber, withParticipant: destinationNumber) {
             let msg = self.cpaas.smsService!.createMessage(withText: message)
             conversation.send(message: msg){
@@ -69,7 +62,7 @@ class SMS_Handler: CPSmsDelegate {
                 if error != nil {
                     print("SmsService.send failed. destination: \(String(describing: self.destinationNumber)). Error desc:\(error!.description)")
                     self.delegate_SMS?.sendMessage(isSuccess: false)
-
+                    
                 } else {
                     print("SMS message sent to \(String(describing: self.destinationNumber))!")
                     // save message to application model

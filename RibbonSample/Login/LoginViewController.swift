@@ -3,12 +3,12 @@ import UIKit
 import CPaaSSDK
 
 class LoginViewController: BaseViewController {
-
+    
     @IBOutlet weak var container_View: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
     
     @IBOutlet weak var login_Button: UIButton!
-
+    
     @IBOutlet weak var email_Field: UITextField!
     @IBOutlet weak var clientId_Field: UITextField!
     @IBOutlet weak var password_Field: UITextField!
@@ -17,14 +17,14 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var email_View: UIView!
     @IBOutlet weak var password_View: UIView!
     @IBOutlet weak var baseUrl_View: UIView!
-
+    
     var currentTextField: UITextField!
     
     var idToken : String!
     var accessToken : String!
     var lifeTime : Int = 3600
     var channelInfo : String!
-
+    
     var cpaas: CPaaS!
     var authentication: CPAuthenticationService {
         get {
@@ -34,13 +34,13 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Hardcoded Values
         self.clientId_Field.text = "PUB-nesonukuv.34mv" //"PUB-hcl1133.o78s"
         self.email_Field.text =  "nesonukuv1@planet-travel.club" //"guptar@nextemail.net"
         self.password_Field.text = "Test@123" //Test@123"
         self.baseUrl_Field.text = "oauth-cpaas.att.com" ////"nvs-cpaas-oauth.kandy.io"
-
+        
         self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "Password Grant")
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -74,24 +74,24 @@ extension LoginViewController{
         baseUrl_View.layer.cornerRadius = 4.0
         baseUrl_View.layer.borderColor = UIColor.gray.cgColor
         baseUrl_View.layer.borderWidth = 0.8
-
+        
     }
     
     @objc func keyboardWillShow(notification: Notification) {
-            if let currentView = self.view.viewWithTag(currentTextField.tag-900) {
-                let kbrect: CGRect? = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-                let heightOffset: CGFloat = scrollVw.frame.origin.y + container_View.frame.origin.y + currentView.frame.origin.y + currentView.frame.size.height + 60
-                
-                if heightOffset > (kbrect?.origin.y ?? 00) {
-                    scrollVw.isScrollEnabled = true
-                    UIView.beginAnimations(nil, context: nil)
-                    UIView.setAnimationDuration(0.3)
-                    scrollVw.contentOffset = CGPoint(x: 0, y: heightOffset - (kbrect?.origin.y)! )
-                    UIView.commitAnimations()
-                } else {
-                    scrollVw.isScrollEnabled = false
-                }
+        if let currentView = self.view.viewWithTag(currentTextField.tag-900) {
+            let kbrect: CGRect? = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+            let heightOffset: CGFloat = scrollVw.frame.origin.y + container_View.frame.origin.y + currentView.frame.origin.y + currentView.frame.size.height + 60
+            
+            if heightOffset > (kbrect?.origin.y ?? 00) {
+                scrollVw.isScrollEnabled = true
+                UIView.beginAnimations(nil, context: nil)
+                UIView.setAnimationDuration(0.3)
+                scrollVw.contentOffset = CGPoint(x: 0, y: heightOffset - (kbrect?.origin.y)! )
+                UIView.commitAnimations()
+            } else {
+                scrollVw.isScrollEnabled = false
             }
+        }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
@@ -103,7 +103,7 @@ extension LoginViewController{
         self.scrollVw.isScrollEnabled = false
     }
 }
-    
+
 extension LoginViewController{
     
     @IBAction func loginButtonClicked(_ sender: UIButton) {
@@ -112,7 +112,7 @@ extension LoginViewController{
             Alert.instance.showAlert(msg: "Enter valid Client ID", title: "Error", sender: self)
             return
         }
-
+        
         if self.email_Field.isEmpty(){
             Alert.instance.showAlert(msg: "Enter valid Email ID", title: "Error", sender: self)
             return
@@ -163,13 +163,13 @@ extension LoginViewController{
                         
                         self.idToken = loginModel.id_token
                         self.accessToken = loginModel.access_token
-
+                        UserDefaultsClass.sharedInstance.setIsUserLoggedIn(isLoggedIn: true)
                         self.setConfig()
                         self.subscribeServices()
                         self.setToken()
                     }
                 }
-
+                
             }
         }else{
             DispatchQueue.main.async { () -> Void in
@@ -213,7 +213,7 @@ extension LoginViewController {
     
     func setToken() {
         LoaderClass.sharedInstance.showActivityIndicator()
-
+        
         self.authentication.connect(idToken: self.idToken, accessToken: self.accessToken, lifetime: self.lifeTime) { (error, channelInfo) in
             
             if let error = error {

@@ -18,9 +18,9 @@ protocol CallDelegate {
     func ignoreSucceed(_ call: CPCallDelegate)
     func ignoreFailed(_ call: CPCallDelegate, withError error: CPError)
     func endCallFailed(_ call: CPCallDelegate, withError error: CPError)
-
+    
     func callStatusChanged(_ call: CPCallDelegate, with callState: CPCallState)
-
+    
 }
 
 class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
@@ -57,7 +57,7 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
         let destAddress = destinationNumber.components(separatedBy: "@")
         let destUserId: String = destAddress[0]
         let destDomain: String = destAddress[1]
-
+        
         let term = CPUriAddress(username: destUserId, withDomain: destDomain)
         
         service?.createOutGoingCall(self, andTerminator: term, completion: { (call, error) in
@@ -67,11 +67,11 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
             }
             call?.establishCall(isVideo)
         })
-
+        
     }
     
     func incomingCall(_ call: CPIncomingCallDelegate) {
-//        call.acceptCall(false)
+        //        call.acceptCall(false)
         print("Received Call")
         delegate_CALL?.incomingCall(call)
     }
@@ -79,7 +79,7 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
     func callStatusChanged(_ call: CPCallDelegate, with callState: CPCallState) {
         print("Call status",callState.type)
         delegate_CALL?.callStatusChanged(call, with: callState)
-
+        
     }
     
     func callAdditionalInfoChanged(_ call: CPCallDelegate, with detailedInfo: [AnyHashable : Any]) {

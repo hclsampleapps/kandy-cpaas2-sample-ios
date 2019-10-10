@@ -16,7 +16,6 @@ class DirectoryModule: NSObject  {
         super.init()
     }
     
-    
     var authentication: CPAuthenticationService {
         get {
             return self.cpaas.authenticationService
@@ -24,10 +23,6 @@ class DirectoryModule: NSObject  {
     }
     
     var delegate_Directory:DirectoryModuleDelegate?
-    
-    
-    
-    
     
     func searchContactInDirectory(searchText: String, selectedFilterKeyType:CPAddressBook.FieldType,selectedOrderType: CPAddressBook.OrderType, selectedSortType:CPAddressBook.FieldType) -> Void {
         
