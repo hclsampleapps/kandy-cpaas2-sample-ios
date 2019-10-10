@@ -58,7 +58,7 @@ class Chat_Handler : CPChatDelegate {
     func subscribeServices() {
         self.cpaas.chatService!.delegate = self
     }
-
+    
     func sendMessage(message: String) {
         if let conversation = self.cpaas.chatService!.createConversation(withParticipant: self.destinationNumber) {
             conversation.send(withText: message){

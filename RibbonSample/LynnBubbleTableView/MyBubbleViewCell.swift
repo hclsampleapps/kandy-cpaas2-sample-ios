@@ -47,12 +47,12 @@ class MyBubbleViewCell: UITableViewCell {
             print("UIGestureRecognizerStateBegan.")
             //Do Whatever You want on Began of Gesture
             self.gestureTarget?.textLongPressed(cell: self)
-//            self.gestureTarget?.textLongPressed?(cell:self, text:self.lbText!.text!)
+            //            self.gestureTarget?.textLongPressed?(cell:self, text:self.lbText!.text!)
         }
     }
     
-//    func textLongPressed() {
-//        
-//    }
+    //    func textLongPressed() {
+    //        
+    //    }
     
 }

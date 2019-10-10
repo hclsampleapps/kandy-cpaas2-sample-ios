@@ -7,7 +7,7 @@ class LoginModel: NSObject {
     var clientId:String?
     var emailId:String?
     var password:String?
-
+    
 }
 
 

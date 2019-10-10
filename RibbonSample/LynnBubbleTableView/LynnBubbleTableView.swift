@@ -20,10 +20,10 @@ public protocol LynnBubbleViewDataSource : class {
     @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didLongTouchedAt index:Int)
     @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didTouchedUserProfile userData:LynnUserData, at index:Int)
     @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didTouchedAttachedImage image:UIImage, at index:Int)
-//    @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didTouchedURLLink urlLink:String, at index:Int)
+    //    @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didTouchedURLLink urlLink:String, at index:Int)
     @objc optional func bubbleTableView(_ bubbleTableView:LynnBubbleTableView, didSelectRowAt index:Int)
-//    @objc optional func bubbleTableView(reachedTop bubbleTableView:LynnBubbleTableView)
-//    @objc optional func bubbleTableView(reachedBottom bubbleTableView:LynnBubbleTableView)
+    //    @objc optional func bubbleTableView(reachedTop bubbleTableView:LynnBubbleTableView)
+    //    @objc optional func bubbleTableView(reachedBottom bubbleTableView:LynnBubbleTableView)
 }
 
 protocol BubbleViewCellEventDelegate : NSObjectProtocol {
@@ -77,7 +77,7 @@ open class LynnBubbleTableView: UITableView {
         self.dataSource = self
         
         self.rowHeight = UITableView.automaticDimension
-//        self.estimatedRowHeight = 80
+        //        self.estimatedRowHeight = 80
         
         self.register(UINib(nibName: "LynnBubbleViewHeaderCell", bundle: nil), forCellReuseIdentifier: "lynnBubbleHeaderCell")
         self.register(UINib(nibName: "MyBubbleViewCell", bundle: nil), forCellReuseIdentifier: "myBubbleCell")
@@ -208,9 +208,9 @@ extension LynnBubbleTableView : UITableViewDataSource {
             
         }else {
             
-        let bubbleData:LynnBubbleData = self.arrBubbleSection[indexPath.section][indexPath.row - 1]
-        var cell:MyBubbleViewCell = MyBubbleViewCell()
-
+            let bubbleData:LynnBubbleData = self.arrBubbleSection[indexPath.section][indexPath.row - 1]
+            var cell:MyBubbleViewCell = MyBubbleViewCell()
+            
             if bubbleData.imageData == nil {
                 cell = tableView.dequeueReusableCell(withIdentifier: "someonesBubbleCell") as! Someone_sBubbleViewCell
             }else{
@@ -229,12 +229,12 @@ extension LynnBubbleTableView : UITableViewDataSource {
                 imgCell.setBubbleData(data: bubbleData, grouping: false, showNickName: showNickName && bubbleData.userData.userNickName != nil )
             }
             
-//            cell.setBubbleData(data: bubbleData)
+            //            cell.setBubbleData(data: bubbleData)
             cell.gestureTarget = self
             return cell
         }
     }
-//
+    //
     @objc(tableView:heightForRowAtIndexPath:)
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -321,14 +321,14 @@ extension LynnBubbleTableView : BubbleViewCellEventDelegate {
             self.bubbleDelegate?.bubbleTableView?(self, didTouchedAttachedImage: tappedImage, at: self.getDataRow(indexPath: indexPath))
         }
     }
-
+    
     internal func userProfilePressed(cell: MyBubbleViewCell) {
         if let indexPath = self.indexPath(for: cell){
             let bubbleData = self.arrBubbleSection[indexPath.section][indexPath.row - 1]
             self.bubbleDelegate?.bubbleTableView?(self, didTouchedUserProfile: bubbleData.userData, at: self.getDataRow(indexPath: indexPath))
         }
     }
-
+    
     internal func textLongPressed(cell:MyBubbleViewCell) {
         if let indexPath = self.indexPath(for: cell){
             self.bubbleDelegate?.bubbleTableView?(self, didLongTouchedAt: self.getDataRow(indexPath: indexPath))

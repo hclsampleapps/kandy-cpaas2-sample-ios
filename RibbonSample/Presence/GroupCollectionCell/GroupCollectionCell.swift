@@ -9,7 +9,7 @@ class GroupCollectionCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         setupUI()
-}
+    }
     private func setupUI(){
         status_imageView.layer.cornerRadius = status_imageView.frame.size.height/2
         status_imageView.backgroundColor = .green
@@ -24,5 +24,5 @@ class GroupCollectionCell: UICollectionViewCell {
         name_lbl.text = name
         status_lbl.text = withStatus
     }
-
+    
 }

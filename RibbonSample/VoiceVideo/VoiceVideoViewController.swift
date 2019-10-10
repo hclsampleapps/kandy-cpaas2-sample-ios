@@ -32,7 +32,7 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
         txtDestNumber.placeholder = "[userId]@[domain]"
         txtDestNumber.text = "nesonukuv@nesonukuv.34mv.att.com"
         //txtDestNumber.text = "+12522327784@kandy.pass.5gt3.att.com"
-
+        
         
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "CALL")
         
@@ -43,7 +43,7 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
         
         outgoingCallCustomView = Bundle.main.loadNibNamed("OutgoingCallCustomView", owner: self, options: nil)?[0] as? OutgoingCallCustomView
         if(audioButton.isSelected == true) {
-        outgoingCallCustomView.isAudioCall = true
+            outgoingCallCustomView.isAudioCall = true
         } else {
             outgoingCallCustomView.isAudioCall = false
         }
@@ -86,7 +86,7 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-
+        
     }
     
     
@@ -123,7 +123,7 @@ extension VoiceVideoViewController{
             if (self.currentOutgoingCall != nil){
                 self.currentOutgoingCall = nil
             }
-
+            
             self.currentOutgoingCall = call
             LoaderClass.sharedInstance.hideOverlayView()
             
@@ -156,7 +156,7 @@ extension VoiceVideoViewController{
         DispatchQueue.main.async { () -> Void in
             LoaderClass.sharedInstance.hideOverlayView()
             Alert.instance.showAlert(msg: "Call Ended", title: "", sender: self)
-
+            
             if (self.currentOutgoingCall != nil){
                 self.currentOutgoingCall.endCall()
                 self.currentOutgoingCall = nil
@@ -332,7 +332,7 @@ extension VoiceVideoViewController: OutgoingCallDelegate{
         if (self.currentOutgoingCall != nil){
             self.currentOutgoingCall.endCall()
         }
-
+        
         self.hideOutgoingCallView(shouldHide: true)
         self.hideOutgoingCallView(shouldHide: true)
     }
@@ -375,7 +375,7 @@ extension VoiceVideoViewController{
     }
     
     func hideOutgoingCallView(shouldHide:Bool) -> Void {
-       self.outgoingCallCustomView.showHideView()
+        self.outgoingCallCustomView.showHideView()
         if shouldHide {
             app_Delegate?.window?.sendSubviewToBack(self.outgoingCallCustomView)
             self.outgoingCallCustomView.isHidden = true

@@ -13,7 +13,7 @@ class AddressbookTableViewCell: UITableViewCell {
     @IBOutlet var txtHomePhoneNumber: UITextField!
     @IBOutlet var imgBuddy: UIImageView!
     @IBOutlet var btnBuddy: UIButton!
-
+    
     internal func displayContentType(object: AddressbookBO)
     {
         txtContactId.text = object.contactId

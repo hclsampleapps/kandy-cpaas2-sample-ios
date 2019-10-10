@@ -7,7 +7,7 @@ It is a sample app where CPaaS2 APIs are used to make the following modules
 - [x] Call
 - [x] SMS
 - [x] Chat
-- [x ] Presence
+- [x] Presence
 - [x] Address book
 
 ## Installation

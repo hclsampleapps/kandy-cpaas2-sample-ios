@@ -21,7 +21,7 @@ class AddressBookModule: NSObject  {
     override init() {
         super.init()
     }
-
+    
     
     var authentication: CPAuthenticationService {
         get {
@@ -31,14 +31,14 @@ class AddressBookModule: NSObject  {
     
     var delegate_AddressBook:AddressBookDelegate?
     var delegate_AddUpdateAddressBook:AddressBookAddUpdateDelegate?
-
+    
     
     func fetchContactList() {
         
         /// cpaas is the main instance which holds logged-in user.
         cpaas.addressBookService?.retrieveContactList(completion: { (error, contactList) in
             var arrAddressbook = [AddressbookBO]()
-
+            
             if let error = error {
                 NSLog("Couldn't retrieve contact list from addressbook - Error: \(error.localizedDescription)")
                 self.delegate_AddressBook?.fetchContactList(array: arrAddressbook)
@@ -64,8 +64,8 @@ class AddressBookModule: NSObject  {
             self.delegate_AddressBook?.fetchContactList(array: arrAddressbook)
         })
     }
-
-
+    
+    
     func randomString(length: Int) -> String {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         let len = UInt32(letters.length)
@@ -77,14 +77,14 @@ class AddressBookModule: NSObject  {
         }
         return randomString
     }
-
+    
     func createContact(model: AddressbookBO) -> Void {
         
         let id = randomString(length: 10)
-
+        
         let entity = CPContact(contactId: id)
         entity.contactId = model.contactId
-//        entity.username = model.primaryContact // primaryContact should be here
+        //        entity.username = model.primaryContact // primaryContact should be here
         entity.email = model.email
         entity.firstName = model.firstName
         entity.lastName = model.lastName
@@ -95,13 +95,13 @@ class AddressBookModule: NSObject  {
         /// Save contact to personal addressbook
         /// cpaas is the main instance which holds logged-in user.
         cpaas.addressBookService?.addContact(contact: entity, completion: { (error) in
-                                                if let error = error {
-                                                    NSLog("Couldn't save the contact to addressbook - Error: \(error.localizedDescription)")
-                                                    self.delegate_AddUpdateAddressBook?.addedContact(isSuccess: false)
-                                                    return
-                                                }
-                                                NSLog("Contact is saved to the addressbook")
-                                                self.delegate_AddUpdateAddressBook?.addedContact(isSuccess: true)
+            if let error = error {
+                NSLog("Couldn't save the contact to addressbook - Error: \(error.localizedDescription)")
+                self.delegate_AddUpdateAddressBook?.addedContact(isSuccess: false)
+                return
+            }
+            NSLog("Contact is saved to the addressbook")
+            self.delegate_AddUpdateAddressBook?.addedContact(isSuccess: true)
         })
     }
     
@@ -111,14 +111,14 @@ class AddressBookModule: NSObject  {
         
         let entity = CPContact(contactId: model.contactId ?? "")
         entity.contactId = model.contactId
-//        entity.username = model.primaryContact // primaryContact should be here
+        //        entity.username = model.primaryContact // primaryContact should be here
         entity.email = model.email
         entity.firstName = model.firstName
         entity.lastName = model.lastName
         entity.buddy = model.isBuddy
         entity.homePhoneNumber = model.homePhoneNumber
         entity.businessPhoneNumber = model.businessPhoneNumber
-
+        
         /// cpaas is the main instance which holds logged-in user.
         cpaas.addressBookService?.updateContact(contact: entity, completion: { (error) in
             if let error = error {
@@ -140,7 +140,7 @@ class AddressBookModule: NSObject  {
                                                 completion: { (error) in
                                                     if let error = error {
                                                         NSLog("Couldn't delete the contact from addressbook - Error: \(error.localizedDescription)")
-                                                    self.delegate_AddressBook?.deleteSingleContact(isSuccess: false)
+                                                        self.delegate_AddressBook?.deleteSingleContact(isSuccess: false)
                                                         return
                                                     }
                                                     NSLog("Contact is deleted")
@@ -165,5 +165,5 @@ class AddressBookModule: NSObject  {
         })
     }
     
-
+    
 }

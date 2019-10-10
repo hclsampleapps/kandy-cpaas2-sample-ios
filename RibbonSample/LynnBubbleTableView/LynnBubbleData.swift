@@ -132,7 +132,7 @@ public class LynnAttachedImageData:NSObject {
         }
     }
     
-
+    
 }
 
 public class LynnUserData :NSObject {
@@ -193,30 +193,30 @@ extension LynnAttachedImageProtocol {
         }
         
         /*
-        DispatchQueue.global().async { [unowned self] in
-            if self.imageData?.image != nil {
-                imgView.image = self.imageData?.image
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "_CellDidLoadImageNotification"), object: imgView.superview?.superview)
-                return
-            }else{
-                guard let url = self.imageData?.imageURL else {
-                    imgView.image = self.imageData?.failureImage
-                    self.imageData?.image = self.imageData?.failureImage
-                    self.imageUpdate(to: imgView)
-                    return
-                }
-                imgView.setImageWithUrlRequest(requestUrl: url, placeHolderImage: self.imageData?.placeHolderImage, success: { [weak self] (downloadedImage) in
-                    
-                    self?.imageData?.image = downloadedImage
-                    self?.imageUpdate(to: imgView)
-                    
-                    }, failure: { [weak self] _ in
-                        
-                        self?.imageData?.image = self?.imageData?.failureImage
-                        self?.imageUpdate(to: imgView)
-                })
-            }
-        }*/
+         DispatchQueue.global().async { [unowned self] in
+         if self.imageData?.image != nil {
+         imgView.image = self.imageData?.image
+         NotificationCenter.default.post(name: Notification.Name(rawValue: "_CellDidLoadImageNotification"), object: imgView.superview?.superview)
+         return
+         }else{
+         guard let url = self.imageData?.imageURL else {
+         imgView.image = self.imageData?.failureImage
+         self.imageData?.image = self.imageData?.failureImage
+         self.imageUpdate(to: imgView)
+         return
+         }
+         imgView.setImageWithUrlRequest(requestUrl: url, placeHolderImage: self.imageData?.placeHolderImage, success: { [weak self] (downloadedImage) in
+         
+         self?.imageData?.image = downloadedImage
+         self?.imageUpdate(to: imgView)
+         
+         }, failure: { [weak self] _ in
+         
+         self?.imageData?.image = self?.imageData?.failureImage
+         self?.imageUpdate(to: imgView)
+         })
+         }
+         }*/
         
     }
     

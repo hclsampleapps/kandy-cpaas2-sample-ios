@@ -3,37 +3,37 @@ import UIKit
 import CPaaSSDK
 
 class AddressbookViewController: BaseViewController, AddressBookAddUpdateDelegate {
-       
+    
     @IBOutlet weak var tblVw: UITableView!
     var addressbook = AddressbookBO()
     @IBOutlet weak var lblNoRecord: UILabel!
     var isToUpdate: Bool = false
     @IBOutlet weak var btnAddUpdate: UIButton!
-
-
+    
+    
     var cpaas: CPaaS!
     var address_Handler = AddressBookModule()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "")
-
+        
         self.tblVw.register(UINib(nibName: "AddressbookTableViewCell", bundle: nil), forCellReuseIdentifier: "AddressbookTableViewCell")
         
         NotificationCenter.default.addObserver(self, selector: #selector(AddressbookViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AddressbookViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
         address_Handler.cpaas = self.cpaas
         address_Handler.delegate_AddUpdateAddressBook = self
-
+        
         if isToUpdate {
             btnAddUpdate.setTitle("UPDATE CONTACT", for: UIControl.State.normal)
         }else{
             btnAddUpdate.setTitle("ADD CONTACT", for: UIControl.State.normal)
         }
     }
-
+    
     @IBAction func btnAddUpdateTapped(sender: UIButton){
         
         let indexPath = IndexPath(row: 0, section: 0)
@@ -47,7 +47,7 @@ class AddressbookViewController: BaseViewController, AddressBookAddUpdateDelegat
         object.email = cell.txtEmail.text
         object.homePhoneNumber = cell.txtHomePhoneNumber.text
         object.businessPhoneNumber = cell.txtBusinessPhoneNumber.text
-
+        
         if isToUpdate {
             object.isBuddy = addressbook.isBuddy
             address_Handler.updateContact(model: object)
@@ -74,7 +74,7 @@ class AddressbookViewController: BaseViewController, AddressBookAddUpdateDelegat
             Alert.instance.showAlert(msg: "Unable to Update Contact. Please try again later.", title: "", sender: self)
         }
     }
-
+    
     @objc func buddyTapped(sender: UIButton) {
         let indexPath = IndexPath(row: 0, section: 0)
         let cell = tblVw.cellForRow(at: indexPath) as! AddressbookTableViewCell
@@ -117,7 +117,7 @@ class AddressbookViewController: BaseViewController, AddressBookAddUpdateDelegat
         self.tblVw.contentOffset = CGPoint(x: 0, y: 0)
         UIView.commitAnimations()
     }
-
+    
     
 }
 
@@ -127,7 +127,7 @@ extension AddressbookViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddressbookTableViewCell", for: indexPath) as! AddressbookTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.btnBuddy.addTarget(self, action: #selector(buddyTapped(sender:)), for: UIControl.Event.touchUpInside)
-
+        
         cell.displayContentType(object: addressbook)
         
         return cell

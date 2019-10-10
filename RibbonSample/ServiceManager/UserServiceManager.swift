@@ -27,7 +27,7 @@ class UserServiceManager: NSObject {
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded"
         ]
-                
+        
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30
         self.sessionManager = Alamofire.SessionManager(configuration: configuration)
@@ -54,7 +54,7 @@ class UserServiceManager: NSObject {
             handler?(nil)
         }
     }
-
+    
     // LOGIN
     func loginUser(object: LoginModel,  _ handler:((_ json:JSON?)->Void)?) -> Void
     {
@@ -66,7 +66,7 @@ class UserServiceManager: NSObject {
             "password"       : object.password ?? "",
             "grant_type"     : "password",
             "scope"          : "openid",
-            ]
+        ]
         
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded"
@@ -75,12 +75,12 @@ class UserServiceManager: NSObject {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 30
         self.sessionManager = Alamofire.SessionManager(configuration: configuration)
-
+        
         self.sessionManager.request(urlString, method: .post, parameters: parameters,encoding: URLEncoding.default, headers: headers).responseJSON { (dataResponse) in
             
             print("POSTApi statuscode : ",dataResponse.response?.statusCode ?? "")
             self.sessionManager.session.invalidateAndCancel()
-
+            
             guard dataResponse.result.isSuccess else {
                 let error = dataResponse.result.error!
                 print("POSTApi Error : ",error.localizedDescription)
