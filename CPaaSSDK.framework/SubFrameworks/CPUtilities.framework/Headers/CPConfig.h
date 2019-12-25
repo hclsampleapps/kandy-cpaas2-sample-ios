@@ -179,9 +179,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Sets duration value of DTMF tones im ms.
- * Default value is 600 and can be between 70 and 6000.
+ * Default value is 600 and can be between 40 and 6000.
  *
- * - Since: 1.0.0
+ * - Updated: 2.0.0
  */
 @property (nonatomic) NSUInteger dtmfToneDuration;
 

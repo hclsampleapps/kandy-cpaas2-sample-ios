@@ -112,6 +112,15 @@
  */
 - (void) transferCall: (CPUriAddress * _Nonnull) newAddress;
 
+
+/**
+ * @brief Method used by the application to transfer this call to another active call.
+ *
+ * @param call call information of the endpoint to replace this calee in the call
+ * @since 1.8.0
+ */
+- (void) consultativeTransfer: (id<CPCallDelegate> _Nonnull) call;
+
 /**
  *  Inserts Dual Tone Multi Frequency Signal to sending queue and returns the success
  * @param tone character value of DTMF tone. Can only be 0,1...,9,*,#,a,b,c,d,A,B,C,D;
