@@ -47,7 +47,7 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
     override init() {
     }
     func subscribeServices() {
-        self.cpaas.callService?.setCallApplication(self)
+        self.cpaas.callService?.callApplicationDelegate = self
     }
     
     

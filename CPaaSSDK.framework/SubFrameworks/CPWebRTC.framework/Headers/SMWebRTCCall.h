@@ -202,8 +202,20 @@ typedef NS_ENUM(NSInteger, WRTCConnectionState) {
  * Closes current peer connection and creates a new one.
  * This can be used only for startCallUpdate, if you use it for respondcall update new ice candidates
  * will not be send to otherside.
+ *
+ * @param enableLocalVideo if the local video should be enabled after peer connection reset
+ * @param updateTracks update media tracks if required
  */
-- (void) resetPeerConnection;
+- (void) resetPeerConnection:(BOOL)enableLocalVideo andUpdateMediaTracks:(BOOL)updateTracks;
+
+/**
+ * Updates media tracks if exists or creates them if required.
+ *
+ * @param enableAudio enable sending audio
+ * @param enableVideo enable sending video
+ * @param forHold update transceivers' directions for hold
+ */
+- (int) updateMediaTracksToEnableAudio:(BOOL)enableAudio andEnableVideo:(BOOL)enableVideo forHold:(BOOL)forHold;
 
 /**
  * Invoked when answer of new offer comes.

@@ -13,13 +13,17 @@
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
+#define STREAM_NAME @"SPDRASTRM"
+#define AUDIO_TRACK_ID @"SPDRSTRMa0"
+#define VIDEO_TRACK_ID @"SPDRSTRMv0"
+
 @class SMWebRTCCall;
-@class RTCMediaStream;
 @class RTCVideoTrack;
 @class SMPCObserver;
 @class RTCPeerConnection;
 @class CPTurnCredential;
 @class RTCCameraVideoCapturer;
+@class RTCAudioTrack;
 
 @protocol SMWebRTCCallDelegate;
 
@@ -75,13 +79,13 @@
 - (SMWebRTCCall *) createWebRTCCallWithDelegate:(id<SMWebRTCCallDelegate>)webRTCCallDelegate andTurnCredentials:(CPTurnCredential *)turnCredentials;
 
 /**
- * Creates a media stream.
+ * Creates a audio track.
  *
  * @param audioEnabled indicates if audio should be included in stream
  *
  * @return created local Media Stream.
  */
-- (RTCMediaStream*) createMediaStreamWithAudio:(BOOL) audioEnabled;
+- (RTCAudioTrack*) createAudioTrack:(BOOL) audioEnabled;
 
 /**
  * Creates and returns local media stream
