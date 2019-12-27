@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -84,10 +84,6 @@
 		302FD407224A409300E5C7C3 /* UserServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302FD406224A409300E5C7C3 /* UserServiceManager.swift */; };
 		308DC6C3224A8EED005DD34F /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308DC6C1224A8EED005DD34F /* DashboardViewController.swift */; };
 		308DC6C4224A8EED005DD34F /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 308DC6C2224A8EED005DD34F /* DashboardViewController.xib */; };
-		308DC6C9224A902E005DD34F /* CPaaSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 308DC6C6224A902E005DD34F /* CPaaSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		308DC6CB224A902E005DD34F /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 308DC6C7224A902E005DD34F /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		308DC6CD224A9076005DD34F /* CPaaSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308DC6C6224A902E005DD34F /* CPaaSSDK.framework */; };
-		308DC6CE224A9076005DD34F /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 308DC6C7224A902E005DD34F /* WebRTC.framework */; };
 		30951E32224A2D67002F637C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30951E31224A2D67002F637C /* AppDelegate.swift */; };
 		30951E37224A2D67002F637C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30951E35224A2D67002F637C /* Main.storyboard */; };
 		30951E3A224A2D67002F637C /* RibbonSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30951E38224A2D67002F637C /* RibbonSample.xcdatamodeld */; };
@@ -130,8 +126,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				308DC6C9224A902E005DD34F /* CPaaSSDK.framework in Embed Frameworks */,
-				308DC6CB224A902E005DD34F /* WebRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,8 +213,6 @@
 		302FD406224A409300E5C7C3 /* UserServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceManager.swift; sourceTree = "<group>"; };
 		308DC6C1224A8EED005DD34F /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		308DC6C2224A8EED005DD34F /* DashboardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
-		308DC6C6224A902E005DD34F /* CPaaSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CPaaSSDK.framework; sourceTree = "<group>"; };
-		308DC6C7224A902E005DD34F /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		30951E2E224A2D67002F637C /* RibbonSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RibbonSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30951E31224A2D67002F637C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30951E36224A2D67002F637C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,8 +247,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				308DC6CD224A9076005DD34F /* CPaaSSDK.framework in Frameworks */,
-				308DC6CE224A9076005DD34F /* WebRTC.framework in Frameworks */,
 				30202DFE224A5B5300EDEDAA /* libicucore.tbd in Frameworks */,
 				30202DFC224A5B4900EDEDAA /* libc++.tbd in Frameworks */,
 				30202DFA224A5B3F00EDEDAA /* libsqlite3.tbd in Frameworks */,
@@ -445,8 +435,6 @@
 		30951E25224A2D67002F637C = {
 			isa = PBXGroup;
 			children = (
-				308DC6C6224A902E005DD34F /* CPaaSSDK.framework */,
-				308DC6C7224A902E005DD34F /* WebRTC.framework */,
 				30951E30224A2D67002F637C /* RibbonSample */,
 				30951E48224A2D69002F637C /* RibbonSampleTests */,
 				30951E53224A2D69002F637C /* RibbonSampleUITests */,
@@ -799,20 +787,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RibbonSample/Pods-RibbonSample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RibbonSample/Pods-RibbonSample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RibbonSample/Pods-RibbonSample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
