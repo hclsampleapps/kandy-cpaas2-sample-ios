@@ -1,6 +1,0 @@
-framework module Pods_Kandy_SampleUITests {
-  umbrella header "Pods-Kandy_SampleUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -7,6 +7,9 @@ target 'RibbonSample' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'KMPlaceholderTextView'
+    pod 'KandyCPaaSMobileSDK'
+    project 'RibbonSample.xcodeproj'
+
     
   # Pods for RibbonSample
 
