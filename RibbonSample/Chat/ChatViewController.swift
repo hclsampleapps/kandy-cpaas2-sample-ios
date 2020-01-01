@@ -3,22 +3,24 @@ import UIKit
 import CPaaSSDK
 import KMPlaceholderTextView
 
-class ChatViewController: BaseViewController, ChatDelegate {
+class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
     
     @IBOutlet weak var tbBubbleDemo: LynnBubbleTableView!
     @IBOutlet weak var destinationNumber: UITextField!
-    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var chatInputView: UIView!
     @IBOutlet weak var inputTextView: KMPlaceholderTextView!
+    
     var arrChatTest:Array<LynnBubbleData> = []
     var cpaas: CPaaS!
     var chat_Handler = Chat_Handler()
-    
+    let group_Chat_Handler = GroupChat_handler()
+    var currentGroup : CPChatGroup!
     var userMe = LynnUserData(userUniqueId: "123", userNickName: "", userProfileImage: nil, additionalInfo: nil)//UIImage(named: "ico_girlprofile")
     var userSomeone = LynnUserData(userUniqueId: "234", userNickName: "", userProfileImage: UIImage(named: "ico_girlprofile"), additionalInfo: nil)
+    var viewOpenFromGroup : Bool!
     
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +35,8 @@ class ChatViewController: BaseViewController, ChatDelegate {
         chat_Handler.cpaas = self.cpaas
         chat_Handler.subscribeServices()
         chat_Handler.delegate_CHAT = self
+        
+        group_Chat_Handler.delegate_Group_Chat = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -52,10 +56,16 @@ class ChatViewController: BaseViewController, ChatDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if(self.viewOpenFromGroup == true) {
+            self.tbBubbleDemo.reloadData()
+            self.destinationNumber.isHidden = true
+        }
+    }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
         if NetworkState.isConnected() {
-            if destinationNumber.isEmpty(){
+            if destinationNumber.isEmpty() && self.viewOpenFromGroup == false{
                 DispatchQueue.main.async { () -> Void in
                     LoaderClass.sharedInstance.hideOverlayView()
                     Alert.instance.showAlert(msg: "Please enter Destination UserId.", title: "", sender: self)
@@ -66,11 +76,22 @@ class ChatViewController: BaseViewController, ChatDelegate {
                     LoaderClass.sharedInstance.hideOverlayView()
                     Alert.instance.showAlert(msg: "Please enter text", title: "", sender: self)
                 }
-            }else{
-                LoaderClass.sharedInstance.showActivityIndicator()
-                chat_Handler.destinationNumber = destinationNumber.text
-                chat_Handler.sendMessage(message:inputTextView.text)
-                print(chat_Handler)
+            } else{
+                if(self.viewOpenFromGroup == false) {
+                    LoaderClass.sharedInstance.showActivityIndicator()
+                    chat_Handler.destinationNumber = destinationNumber.text
+                    chat_Handler.sendMessage(message:inputTextView.text)
+                } else {
+                    self.group_Chat_Handler.cpaas = self.cpaas
+                    self.group_Chat_Handler.subscribeServices()
+                    self.group_Chat_Handler.sendMessageInGroup(messageToBesend: inputTextView.text, chatGroup: self.currentGroup) { (status) in
+                        if(status == true) {
+                            print("Message Delivered Sucessfully.")
+                        } else {
+                            print("Message Delivery fail.")
+                        }
+                    }
+                }
             }
         } else{
             DispatchQueue.main.async { () -> Void in
@@ -118,6 +139,16 @@ class ChatViewController: BaseViewController, ChatDelegate {
                 Alert.instance.showAlert(msg: "Failed to sent. Try again later.", title: "", sender: self)
                 self.inputTextView.resignFirstResponder()
             }
+        }
+    }
+    
+    //Group message delegate
+    func outboundGroupMessageSent(){
+        DispatchQueue.main.async {
+            let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userMe, dataOwner: .me, message: self.inputTextView.text, messageDate: Date())
+            self.arrChatTest.append(bubbleData)
+            self.tbBubbleDemo.reloadData()
+            print("Group outbound mesage send")
         }
     }
     
