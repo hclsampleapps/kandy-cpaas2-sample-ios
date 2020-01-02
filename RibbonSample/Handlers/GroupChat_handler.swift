@@ -3,6 +3,7 @@ import CPaaSSDK
 
 protocol GroupChatDelegate {
     func outboundGroupMessageSent()
+    func inboundGroupMessageReceived(message:CPInboundMessage)
 }
 
 class GroupChat_handler: CPChatDelegate {
@@ -114,7 +115,7 @@ class GroupChat_handler: CPChatDelegate {
     
     //Chat delegates
     func inboundMessageReceived(message: CPInboundMessage) {
-        print("Message recived %@",message.description)
+        delegate_Group_Chat?.inboundGroupMessageReceived(message: message)
     }
     
     func deliveryStatusChanged(status: CPMessageStatus) {

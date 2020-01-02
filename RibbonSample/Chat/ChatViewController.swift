@@ -152,6 +152,16 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
         }
     }
     
+    //Group message delegate
+    func inboundGroupMessageReceived(message: CPInboundMessage) {
+        DispatchQueue.main.async {
+            let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: message.value(forKey: "text") as? String, messageDate: (message.value(forKey: "timestamp") as? Date)!)
+            self.arrChatTest.append(bubbleData)
+            self.tbBubbleDemo.reloadData()
+            print("Group outbound mesage send")
+        }
+    }
+    
     @objc func handleKeyboardNotification(_ notification: Notification) {
         
         if let userInfo = notification.userInfo {
