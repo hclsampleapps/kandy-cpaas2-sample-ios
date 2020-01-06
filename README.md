@@ -9,6 +9,7 @@ It is a sample app where CPaaS2 APIs are used to make the following modules
 - [x] Chat
 - [x] Presence
 - [x] Address book
+- [x] Group Chat
 
 ## Installation
 Instructions to install the .ipa on iPhone using Xcode
