@@ -10,6 +10,8 @@
 		04237EC9F2B387035AE7CBC2 /* Pods_RibbonSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5181B91009203AB65BA7897 /* Pods_RibbonSampleUITests.framework */; };
 		1809F485230F28FF0037F78F /* ProjectLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1809F483230F28FF0037F78F /* ProjectLoginViewController.swift */; };
 		1809F486230F28FF0037F78F /* ProjectLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809F484230F28FF0037F78F /* ProjectLoginViewController.xib */; };
+		1811844023BE82FB001054A7 /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811843E23BE82FB001054A7 /* GroupDetailsViewController.swift */; };
+		1811844123BE82FB001054A7 /* GroupDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1811843F23BE82FB001054A7 /* GroupDetailsViewController.xib */; };
 		18182811230C6D5F00181B4A /* VoiceVideoCall_Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818280A230C6D5F00181B4A /* VoiceVideoCall_Handler.swift */; };
 		18182812230C6D5F00181B4A /* OutgoingCallCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818280B230C6D5F00181B4A /* OutgoingCallCustomView.swift */; };
 		18182813230C6D5F00181B4A /* IncomingCallCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818280C230C6D5F00181B4A /* IncomingCallCustomView.xib */; };
@@ -33,6 +35,8 @@
 		181AFD9A225532320055386F /* Someone'sBubbleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181AFD8E225532320055386F /* Someone'sBubbleViewCell.xib */; };
 		181AFD9B225532320055386F /* Someone'sBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181AFD8F225532320055386F /* Someone'sBubbleViewCell.swift */; };
 		181AFD9C225532320055386F /* ImageBubbleSomeoneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181AFD90225532320055386F /* ImageBubbleSomeoneViewCell.swift */; };
+		181D8A7523BBD90B00BDA954 /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D8A7323BBD90B00BDA954 /* GroupChatViewController.swift */; };
+		181D8A7623BBD90B00BDA954 /* GroupChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181D8A7423BBD90B00BDA954 /* GroupChatViewController.xib */; };
 		1820334122625A9600E77FEB /* AddressListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1820333222625A9600E77FEB /* AddressListTableViewCell.xib */; };
 		1820334222625A9600E77FEB /* AddressbookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820333322625A9600E77FEB /* AddressbookTableViewCell.swift */; };
 		1820334322625A9600E77FEB /* AddressbookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1820333422625A9600E77FEB /* AddressbookTableViewCell.xib */; };
@@ -50,6 +54,7 @@
 		1820334F22625A9600E77FEB /* DirectoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1820334022625A9600E77FEB /* DirectoryTableViewCell.xib */; };
 		1820335122625AE700E77FEB /* AddressBookModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820335022625AE700E77FEB /* AddressBookModule.swift */; };
 		1820335322625B0300E77FEB /* DirectoryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1820335222625B0300E77FEB /* DirectoryModule.swift */; };
+		18B665AB23BA723000E942D3 /* GroupChat_handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B665AA23BA723000E942D3 /* GroupChat_handler.swift */; };
 		18B8CD19224D3E2D0067C996 /* Chat_Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8CD15224D3E2D0067C996 /* Chat_Handler.swift */; };
 		18B8CD1A224D3E2D0067C996 /* SMS_Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8CD16224D3E2D0067C996 /* SMS_Handler.swift */; };
 		18B8CD1B224D3E2D0067C996 /* Persense_Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B8CD17224D3E2D0067C996 /* Persense_Handler.swift */; };
@@ -136,6 +141,8 @@
 		022322E34AD7259AB2D40F7B /* Pods-RibbonSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RibbonSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RibbonSampleUITests/Pods-RibbonSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1809F483230F28FF0037F78F /* ProjectLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLoginViewController.swift; sourceTree = "<group>"; };
 		1809F484230F28FF0037F78F /* ProjectLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectLoginViewController.xib; sourceTree = "<group>"; };
+		1811843E23BE82FB001054A7 /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		1811843F23BE82FB001054A7 /* GroupDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupDetailsViewController.xib; sourceTree = "<group>"; };
 		1818280A230C6D5F00181B4A /* VoiceVideoCall_Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceVideoCall_Handler.swift; sourceTree = "<group>"; };
 		1818280B230C6D5F00181B4A /* OutgoingCallCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallCustomView.swift; sourceTree = "<group>"; };
 		1818280C230C6D5F00181B4A /* IncomingCallCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IncomingCallCustomView.xib; sourceTree = "<group>"; };
@@ -159,6 +166,8 @@
 		181AFD8E225532320055386F /* Someone'sBubbleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Someone'sBubbleViewCell.xib"; sourceTree = "<group>"; };
 		181AFD8F225532320055386F /* Someone'sBubbleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Someone'sBubbleViewCell.swift"; sourceTree = "<group>"; };
 		181AFD90225532320055386F /* ImageBubbleSomeoneViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBubbleSomeoneViewCell.swift; sourceTree = "<group>"; };
+		181D8A7323BBD90B00BDA954 /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
+		181D8A7423BBD90B00BDA954 /* GroupChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupChatViewController.xib; sourceTree = "<group>"; };
 		1820333222625A9600E77FEB /* AddressListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressListTableViewCell.xib; sourceTree = "<group>"; };
 		1820333322625A9600E77FEB /* AddressbookTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressbookTableViewCell.swift; sourceTree = "<group>"; };
 		1820333422625A9600E77FEB /* AddressbookTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressbookTableViewCell.xib; sourceTree = "<group>"; };
@@ -176,6 +185,7 @@
 		1820334022625A9600E77FEB /* DirectoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DirectoryTableViewCell.xib; sourceTree = "<group>"; };
 		1820335022625AE700E77FEB /* AddressBookModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookModule.swift; sourceTree = "<group>"; };
 		1820335222625B0300E77FEB /* DirectoryModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryModule.swift; sourceTree = "<group>"; };
+		18B665AA23BA723000E942D3 /* GroupChat_handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChat_handler.swift; sourceTree = "<group>"; };
 		18B8CD15224D3E2D0067C996 /* Chat_Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat_Handler.swift; sourceTree = "<group>"; };
 		18B8CD16224D3E2D0067C996 /* SMS_Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMS_Handler.swift; sourceTree = "<group>"; };
 		18B8CD17224D3E2D0067C996 /* Persense_Handler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persense_Handler.swift; sourceTree = "<group>"; };
@@ -338,6 +348,17 @@
 			path = LynnBubbleTableView;
 			sourceTree = "<group>";
 		};
+		181D8A7223BBD8C600BDA954 /* GroupChat */ = {
+			isa = PBXGroup;
+			children = (
+				181D8A7323BBD90B00BDA954 /* GroupChatViewController.swift */,
+				181D8A7423BBD90B00BDA954 /* GroupChatViewController.xib */,
+				1811843E23BE82FB001054A7 /* GroupDetailsViewController.swift */,
+				1811843F23BE82FB001054A7 /* GroupDetailsViewController.xib */,
+			);
+			path = GroupChat;
+			sourceTree = "<group>";
+		};
 		1820333122625A9600E77FEB /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +389,7 @@
 				18B8CD15224D3E2D0067C996 /* Chat_Handler.swift */,
 				18B8CD16224D3E2D0067C996 /* SMS_Handler.swift */,
 				18B8CD17224D3E2D0067C996 /* Persense_Handler.swift */,
+				18B665AA23BA723000E942D3 /* GroupChat_handler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -457,6 +479,7 @@
 		30951E30224A2D67002F637C /* RibbonSample */ = {
 			isa = PBXGroup;
 			children = (
+				181D8A7223BBD8C600BDA954 /* GroupChat */,
 				62572CC2232E7E300018C49B /* Presence */,
 				18182809230C6D5F00181B4A /* VoiceVideo */,
 				1820333122625A9600E77FEB /* AddressBook */,
@@ -672,7 +695,9 @@
 				1820334822625A9600E77FEB /* DirectoryViewController.xib in Resources */,
 				18182815230C6D5F00181B4A /* VoiceVideoViewController.xib in Resources */,
 				18182817230C6D5F00181B4A /* OutgoingCallCustomView.xib in Resources */,
+				181D8A7623BBD90B00BDA954 /* GroupChatViewController.xib in Resources */,
 				181AFD82225530210055386F /* SMSViewController.xib in Resources */,
+				1811844123BE82FB001054A7 /* GroupDetailsViewController.xib in Resources */,
 				18182813230C6D5F00181B4A /* IncomingCallCustomView.xib in Resources */,
 				302FD3EE224A3ECB00E5C7C3 /* LoginViewController.xib in Resources */,
 				1820334A22625A9600E77FEB /* AddressDirectoryViewController.xib in Resources */,
@@ -817,10 +842,12 @@
 				18B8CD19224D3E2D0067C996 /* Chat_Handler.swift in Sources */,
 				181AFD94225532320055386F /* ImageBubbleTableViewCell.swift in Sources */,
 				18182811230C6D5F00181B4A /* VoiceVideoCall_Handler.swift in Sources */,
+				18B665AB23BA723000E942D3 /* GroupChat_handler.swift in Sources */,
 				62572CC5232E7ECF0018C49B /* PresenceViewController.swift in Sources */,
 				302FD3FC224A3F7A00E5C7C3 /* GlobalFunctions.swift in Sources */,
 				18B8CD1A224D3E2D0067C996 /* SMS_Handler.swift in Sources */,
 				1820334622625A9600E77FEB /* DirectoryViewController.swift in Sources */,
+				181D8A7523BBD90B00BDA954 /* GroupChatViewController.swift in Sources */,
 				1820334722625A9600E77FEB /* AddressDirectoryViewController.swift in Sources */,
 				181AFD98225532320055386F /* LynnBubbleData.swift in Sources */,
 				1820334B22625A9600E77FEB /* AddressListTableViewCell.swift in Sources */,
@@ -845,6 +872,7 @@
 				1820334522625A9600E77FEB /* DirectoryTableViewCell.swift in Sources */,
 				18B8CD1B224D3E2D0067C996 /* Persense_Handler.swift in Sources */,
 				30951E32224A2D67002F637C /* AppDelegate.swift in Sources */,
+				1811844023BE82FB001054A7 /* GroupDetailsViewController.swift in Sources */,
 				181AFD97225532320055386F /* LynnBubbleTableView.swift in Sources */,
 				302FD400224A3F7A00E5C7C3 /* Alert.swift in Sources */,
 				30CF4F47224B8330002D5328 /* DashboardTypeCustomCollectionCell.swift in Sources */,

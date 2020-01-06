@@ -140,6 +140,10 @@ extension LoginViewController{
         model.emailId = self.email_Field.text
         model.password =  self.password_Field.text
         
+        var appDelegate: AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.loggedInuserEmail = model.emailId
+        
         if NetworkState.isConnected(){
             let userServiceManager = UserServiceManager()
             userServiceManager.loginUser(object: model) { (json) in
