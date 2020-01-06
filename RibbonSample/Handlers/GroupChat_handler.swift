@@ -36,7 +36,6 @@ class GroupChat_handler: CPChatDelegate {
                 print(self.chatGroupsList?.groupID ?? "No group id found")
                 if(self.chatGroupsList?.groupID != nil) {
                     self.groupId = (self.chatGroupsList?.groupID!)!
-                    self.addParticipants()
                 }
             }
         })
@@ -88,31 +87,32 @@ class GroupChat_handler: CPChatDelegate {
     }
     
     //Add participants
-    
-    func addParticipants() {
-        let address = "nesonukuv@nesonukuv.34mv.att.com"
-        let isAdmin = false
+    func addParticipants(chatGroup : CPChatGroup,memberAddress:String,memberStatus:Bool,handler:@escaping (_ error:CPError?)-> Void) {
+        let address = memberAddress
+        let isAdmin = memberStatus
         let participant = CPChatGroupParticipant(address: address, admin: isAdmin)
-        self.chatGroupsList.add(participant: participant) { (error) in
-            if(error == nil) {
-//                self.fetchGroupWithgroupId(groupId: self.groupId)
-//                self.sendMessageInGroup(messageToBesend: "Hi neeadsdas")
+        chatGroup.add(participant: participant) { (error) in
+            if(error != nil) {
+                handler(error!)
+                print("Error in sending message %@",error!.description)
+                } else{
+                handler(error)
             }
         }
     }
     
-    // Delete Group
-    
-    func deletGroup(groupId:String) {
-        self.chatService.deleteChatGroup(groupID: groupId) { (error) in
-            if error == nil {
-//                self.getGroupsConversationList()
-            } else {
-                print("Group not found")
+    //Delete participants
+    func deleteParticipants(chatGroup : CPChatGroup,member:CPChatGroupParticipant,handler:@escaping (_ error:CPError?)-> Void) {
+        chatGroup.remove(participant: member) { (error) in
+            if(error != nil) {
+                handler(error!)
+                print("Error in removeing participant %@",error!.description)
+            } else{
+                handler(error)
             }
         }
     }
-    
+
     //Chat delegates
     func inboundMessageReceived(message: CPInboundMessage) {
         delegate_Group_Chat?.inboundGroupMessageReceived(message: message)

@@ -30,11 +30,9 @@ class GroupChatViewController: UIViewController,UITableViewDataSource,UITableVie
     
     func parseGroupList(results:FetchResult) {
             var fetchGroups = [FetchedObjects]()
-//            let group = DispatchGroup()
             fetchGroups = results.result!
             var count = fetchGroups.count
             for currentGroup in fetchGroups {
-              //  group.enter()
                 self.vc.fetchGroupWithgroupId(groupId: currentGroup.value(forKey: "participant") as! String, handler: { (group) in
                     if(group != nil) {
                         count = count - 1
@@ -43,18 +41,8 @@ class GroupChatViewController: UIViewController,UITableViewDataSource,UITableVie
                             self.groupListTableView.reloadData()
                         }
                     }
-//                    if (count == 0) {
-//                        group?.leave(completion: { (error) in
-//                            if(error != nil) {
-//                                print("Error leaving group %@",error?.description ?? "Error")
-//                            }
-//                        })
-//                    }
                 })
             }
-//            group.notify(queue: DispatchQueue.main) {
-//                self.groupListTableView.reloadData()
-//            }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,11 +78,9 @@ class GroupChatViewController: UIViewController,UITableViewDataSource,UITableVie
     }
     
     func moveToChatView(conversationResults:FetchResult) {
-        
         self.chatViewControllerObject.arrChatTest.removeAll()
         var appDelegate: AppDelegate
         appDelegate = UIApplication.shared.delegate as! AppDelegate
-
         for message in conversationResults.result! {
             let msg: CPMessage = message as! CPMessage
             let bubbleData:LynnBubbleData

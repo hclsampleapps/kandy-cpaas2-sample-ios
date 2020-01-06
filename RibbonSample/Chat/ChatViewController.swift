@@ -60,7 +60,16 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
         if(self.viewOpenFromGroup == true) {
             self.tbBubbleDemo.reloadData()
             self.destinationNumber.isHidden = true
+            let navigationButton = UIBarButtonItem(title: "Info", style: .plain, target: self, action: #selector(getGroupInfo))
+            self.navigationItem.rightBarButtonItem  = navigationButton
         }
+    }
+    
+    @objc func getGroupInfo(){
+        let vc  = GroupDetailsViewController(nibName:"GroupDetailsViewController",bundle:nil)
+        vc.currentGroup = self.currentGroup
+        vc.cpaas = self.cpaas
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func sendButtonTapped(_ sender: UIButton) {
