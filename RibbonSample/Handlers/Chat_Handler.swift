@@ -85,7 +85,6 @@ class Chat_Handler : CPChatDelegate {
             (error, conversations) -> Void in
             if (error == nil){
                 // save conversations to application model
-                print(conversations);
             } else {
                 // an error occurred
                 print("Couldn't fetch conversations: \(error!.localizedDescription)")
@@ -93,5 +92,18 @@ class Chat_Handler : CPChatDelegate {
         }
     }
     
+    //For multimedia
+    func sendMessageWithAttachment(message: String,destinationNumberAddress:String,fileAttachment: URL,handler:@escaping (_ error:CPError?)-> Void) {
+        let chatConversationObject = self.cpaas.chatService!.createConversation(withParticipant: destinationNumberAddress) as! CPChatConversation
+        chatConversationObject.send(text: message, withFile: fileAttachment, progress: { (value1, value2) in
+        }) { (error,outBoundMessage) in
+            if(error != nil) {
+                handler(error)
+            } else {
+                handler(error)
+            }
+        }
+    }
+
 }
 

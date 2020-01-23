@@ -24,14 +24,6 @@ protocol CallDelegate {
 }
 
 class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
-    func transferCallSucceed(_ call: CPCallDelegate) {
-        
-    }
-    
-    func transferCallFailed(_ call: CPCallDelegate, withError error: CPError) {
-        
-    }
-    
     
     var cpaas: CPaaS!
     var destinationNumber: String!
@@ -188,4 +180,19 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
         print("UnHold CallFailed");
     }
     
+    func transferCallSucceed(_ call: CPCallDelegate) {
+        print("Transfer call suceed");
+    }
+    
+    func transferCallFailed(_ call: CPCallDelegate, withError error: CPError) {
+        print("Transfer call failed");
+    }
+    
+    func forwardCallSucceed(_ call: CPCallDelegate) {
+        print("Forward Call Succeed");
+    }
+    
+    func forwardCallFailed(_ call: CPCallDelegate, withError error: CPError) {
+        print("Forward Call Failed");
+    }    
 }
