@@ -47,8 +47,9 @@ Instructions to build the app
 
 1. Open the project folder in terminal.
 2. Run 'pod install' it will add all the pods required.
-3. Open RibbonSample.xcworkspace
-4. Build and deploy the app
+3. Run 'pod update KandyCPaaSMobileSDK' to update to latest CpaaS pod.
+4. Open RibbonSample.xcworkspace
+5. Build and deploy the app
 
 ### Branching strategy
 To learn about the branching strategy, contribution & coding conventions followed in the project, please refer [GitFlow based branching strategy](https://gist.github.com/ribbon-abku/10d3fc1cff5c35a2df401196678e258a) for your project repository.
