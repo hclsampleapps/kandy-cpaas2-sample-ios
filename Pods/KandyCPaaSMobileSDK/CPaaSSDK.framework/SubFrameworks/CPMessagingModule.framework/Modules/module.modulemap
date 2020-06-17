@@ -1,4 +1,0 @@
-framework module CPMessagingModule {
-  header "CPMessagingModule-Swift.h"
-  requires objc
-}

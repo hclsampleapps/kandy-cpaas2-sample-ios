@@ -1,6 +1,0 @@
-framework module CPWebRTC {
-  umbrella header "CPWebRTC.h"
-
-  export *
-  module * { export * }
-}
