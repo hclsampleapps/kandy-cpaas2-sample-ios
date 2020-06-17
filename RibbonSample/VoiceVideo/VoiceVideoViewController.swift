@@ -2,7 +2,7 @@
 import UIKit
 import Photos
 import CPaaSSDK
-import CPCallService
+import CPCallModule
 import CallKit
 
 

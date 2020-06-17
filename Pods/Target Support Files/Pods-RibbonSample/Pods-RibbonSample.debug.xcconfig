@@ -1,0 +1,14 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+ENABLE_BITCODE = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KMPlaceholderTextView" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON" "${PODS_ROOT}/KandyCPaaSMobileSDK" "${PODS_ROOT}/KandyWebRTC" $(inherited) "${PODS_ROOT}/KandyCPaaSMobileSDK/CPaaSSDK.framework/SubFrameworks" "${PODS_ROOT}/KandyWebRTC/Frameworks"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"icucore" -l"sqlite3" -l"stdc++" -l"z" -framework "AVFoundation" -framework "AudioToolbox" -framework "CFNetwork" -framework "CPaaSSDK" -framework "CoreAudio" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreVideo" -framework "GLKit" -framework "KMPlaceholderTextView" -framework "OpenGLES" -framework "PushKit" -framework "QuartzCore" -framework "Security" -framework "SwiftyJSON" -framework "SystemConfiguration" -framework "UIKit" -framework "VideoToolbox" -framework "WebRTC"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

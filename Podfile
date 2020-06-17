@@ -4,10 +4,9 @@
 target 'RibbonSample' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-    pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'KMPlaceholderTextView'
-    pod 'KandyCPaaSMobileSDK' , '2.6.0'
+    pod 'KandyCPaaSMobileSDK' , '2.7.0'
     project 'RibbonSample.xcodeproj'
 
     

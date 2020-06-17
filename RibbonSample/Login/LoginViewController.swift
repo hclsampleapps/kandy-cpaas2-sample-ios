@@ -139,7 +139,9 @@ extension LoginViewController{
         model.clientId = self.clientId_Field.text
         model.emailId = self.email_Field.text
         model.password =  self.password_Field.text
-        
+        model.grant_type = "password"
+        model.scope = "openid"
+
         var appDelegate: AppDelegate
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.loggedInuserEmail = model.emailId
@@ -211,6 +213,8 @@ extension LoginViewController {
         
         // Set log level
         configuration.logManager.logLevel = .traceWebRTC
+        configuration.iceCollectionTimeout = 12
+        configuration.iceOption = .vanilla
         
         // Setting ICE Servers
         let iceServers: CPICEServers = CPICEServers()

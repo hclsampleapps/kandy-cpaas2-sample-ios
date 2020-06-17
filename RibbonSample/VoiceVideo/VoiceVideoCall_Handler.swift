@@ -1,7 +1,7 @@
 
 import Foundation
 import CPaaSSDK
-import CPCallService
+import CPCallModule
 import CallKit
 
 protocol CallDelegate {

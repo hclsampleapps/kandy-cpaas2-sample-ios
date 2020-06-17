@@ -1,9 +1,12 @@
 
 import UIKit
-import Alamofire
 
 class NetworkState {
     class func isConnected() ->Bool {
-        return NetworkReachabilityManager()!.isReachable
+        if Reachability.isConnectedToNetwork(){
+            return true
+        }else{
+            return false
+        }
     }
 }

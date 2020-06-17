@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-RibbonSample/Pods-RibbonSample-frameworks.sh
+${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework
+${PODS_ROOT}/KandyWebRTC/WebRTC.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

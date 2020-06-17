@@ -19,6 +19,7 @@
 		18182815230C6D5F00181B4A /* VoiceVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1818280E230C6D5F00181B4A /* VoiceVideoViewController.xib */; };
 		18182816230C6D5F00181B4A /* VoiceVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818280F230C6D5F00181B4A /* VoiceVideoViewController.swift */; };
 		18182817230C6D5F00181B4A /* OutgoingCallCustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18182810230C6D5F00181B4A /* OutgoingCallCustomView.xib */; };
+		181A8CBF249A99D100C8009F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181A8CBE249A99D100C8009F /* Reachability.swift */; };
 		181AFD80225530210055386F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181AFD7B225530210055386F /* ChatViewController.swift */; };
 		181AFD81225530210055386F /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181AFD7C225530210055386F /* ChatViewController.xib */; };
 		181AFD82225530210055386F /* SMSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181AFD7E225530210055386F /* SMSViewController.xib */; };
@@ -150,6 +151,7 @@
 		1818280E230C6D5F00181B4A /* VoiceVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VoiceVideoViewController.xib; sourceTree = "<group>"; };
 		1818280F230C6D5F00181B4A /* VoiceVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceVideoViewController.swift; sourceTree = "<group>"; };
 		18182810230C6D5F00181B4A /* OutgoingCallCustomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OutgoingCallCustomView.xib; sourceTree = "<group>"; };
+		181A8CBE249A99D100C8009F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		181AFD7B225530210055386F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		181AFD7C225530210055386F /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		181AFD7E225530210055386F /* SMSViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSViewController.xib; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				302FD3FB224A3F7A00E5C7C3 /* NetworkState.swift */,
 				302FD3F7224A3F7A00E5C7C3 /* UserDefaultsClass.swift */,
 				302FD3F9224A3F7A00E5C7C3 /* Alert.swift */,
+				181A8CBE249A99D100C8009F /* Reachability.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				181AFD83225530210055386F /* SMSViewController.swift in Sources */,
 				1809F485230F28FF0037F78F /* ProjectLoginViewController.swift in Sources */,
 				302FD401224A3F7A00E5C7C3 /* ColorConstants.swift in Sources */,
+				181A8CBF249A99D100C8009F /* Reachability.swift in Sources */,
 				308DC6C3224A8EED005DD34F /* DashboardViewController.swift in Sources */,
 				302FD3FD224A3F7A00E5C7C3 /* LoaderClass.swift in Sources */,
 				181AFD95225532320055386F /* MyBubbleViewCell.swift in Sources */,

@@ -1,0 +1,28 @@
+PODS:
+  - KandyCPaaSMobileSDK (2.7.0):
+    - KandyWebRTC
+  - KandyWebRTC (0.78)
+  - KMPlaceholderTextView (1.4.0)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - KandyCPaaSMobileSDK (= 2.7.0)
+  - KMPlaceholderTextView
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - KandyCPaaSMobileSDK
+    - KandyWebRTC
+    - KMPlaceholderTextView
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  KandyCPaaSMobileSDK: 700600a8f90bbc5453cca7d5102305b3d8d15859
+  KandyWebRTC: 654b0a07c7ce74809cb7e5649c4aa6ae837988d2
+  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: 050e8b0ca6f4401976f6a899fc0f18b428f7f287
+
+COCOAPODS: 1.9.3
