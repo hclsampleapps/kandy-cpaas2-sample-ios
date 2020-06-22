@@ -2,8 +2,9 @@
 import UIKit
 import CPaaSSDK
 
-class LoginViewController: BaseViewController {
+class LoginViewController: BaseViewController,CPLoggingDelegate {
     
+
     @IBOutlet weak var container_View: UIView!
     @IBOutlet weak var scrollVw: UIScrollView!
     
@@ -208,22 +209,28 @@ extension LoginViewController :UITextFieldDelegate {
 extension LoginViewController {
     
     func setConfig() {
+
         let configuration = CPConfig.sharedInstance()
-        configuration.restServerUrl = self.baseUrl_Field.text ?? "oauth-cpaas.att.com"
+        configuration.restServerUrl = "oauth-cpaas.att.com"
+        configuration.useSecureConnection = true
+        configuration.logManager.logLevel = .trace
+        configuration.logManager.delegate = self
+        configuration.useSecureConnection = true
         
-        // Set log level
-        configuration.logManager.logLevel = .traceWebRTC
         configuration.iceCollectionTimeout = 12
         configuration.iceOption = .vanilla
-        
+
         // Setting ICE Servers
         let iceServers: CPICEServers = CPICEServers()
         iceServers.addICEServer("turns:turn-ucc-1.genband.com:443?transport=tcp")
         iceServers.addICEServer("turns:turn-ucc-2.genband.com:443?transport=tcp")
         iceServers.addICEServer("stun:turn-ucc-1.genband.com:3478?transport=udp")
         iceServers.addICEServer("stun:turn-ucc-2.genband.com:3478?transport=udp")
-                
-        configuration.useSecureConnection = true
+        configuration.iceServers = iceServers
+    }
+    
+    func log(_ logLevel: CPLogLevel, withLogContext logContext: String, withMethodName methodName: Selector?, withMessage logMessage: String) {
+        print("logLevel ",logLevel,"MethodName ",methodName! ,"logMessage ",logMessage)
     }
     
     func subscribeServices() {
