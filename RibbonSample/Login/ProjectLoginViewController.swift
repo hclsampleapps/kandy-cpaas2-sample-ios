@@ -65,6 +65,8 @@ extension ProjectLoginViewController{
         let model = ProjectLoginModel()
         model.privateprojectkey = self.privateprojectkey_Field.text
         model.privateprojectsecret = self.privateprojectsecret_Field.text
+        model.grant_type = "client_credentials"
+        model.scope = "openid regular_call"
         
         if NetworkState.isConnected(){
             let userServiceManager = UserServiceManager()

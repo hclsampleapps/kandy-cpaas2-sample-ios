@@ -2,8 +2,6 @@
 import UIKit
 import Photos
 import CPaaSSDK
-import CPCallService
-import CallKit
 
 
 class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CallDelegate {

@@ -7,13 +7,16 @@ class LoginModel: NSObject {
     var clientId:String?
     var emailId:String?
     var password:String?
-    
+    var grant_type:String?
+    var scope:String?
 }
 
 
 class ProjectLoginModel: NSObject {
     var privateprojectkey:String?
     var privateprojectsecret:String?
+    var grant_type:String?
+    var scope:String?
 }
 
 class AuthenticationModel: Codable,JSONDecodable {
