@@ -24,6 +24,8 @@
 	<string>LaunchScreen</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app wants to use your photos.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -6,6 +6,8 @@ protocol ChatDelegate {
     func outboundMessageSent()
     func deliveryStatusChanged()
     func sendMessage(isSuccess: Bool)
+    func sendMultiMediaMessage(isSuccess: Bool,fileAttachMent : URL,message: String)
+    func inboundImageMessageReceived(imageUrl: URL, senderNumber: String)
 }
 
 class Chat_Handler : CPChatDelegate {
@@ -25,8 +27,44 @@ class Chat_Handler : CPChatDelegate {
     }
     
     func inboundMessageReceived(message: CPInboundMessage) {
-        print(message)
-        delegate_CHAT?.inboundMessageReceived(message: message.parts[0].value(forKey: "text") as! String, senderNumber: message.sender)
+     delegate_CHAT?.inboundMessageReceived(message: message.parts[0].value(forKey: "text") as! String, senderNumber: message.sender)
+
+      if let attachment = message.files.first {
+          let localFileUrl = self.getLocalFileName()
+          let remoteFileUrl = URL(string: attachment.link)
+          self.cpaas.chatService!.download(fromUrl: remoteFileUrl!, toFile: localFileUrl,
+              progress: { (bytesReceived, totalBytes) in
+                print(bytesReceived)
+              },
+              completion: { (error, fileUrl) in
+                if error != nil {
+                    print("ChatService.download failed. Error desc:\(error!.localizedDescription)")
+                } else {
+                    print("Downloaded attachment to \(String(describing: fileUrl))!")
+                    self.delegate_CHAT?.inboundImageMessageReceived(imageUrl: fileUrl!, senderNumber: message.sender)
+                }
+              }
+          )
+     }
+    }
+    
+    func getLocalFileName() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    
+    func uniqueFileNameWithExtention(fileExtension: String) -> String {
+        let uniqueString: String = ProcessInfo.processInfo.globallyUniqueString
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMddhhmmsss"
+        let dateString: String = formatter.string(from: Date())
+        let uniqueName: String = "\(uniqueString)_\(dateString)"
+        if fileExtension.count > 0 {
+            let fileName: String = "\(uniqueName).\(fileExtension)"
+            return fileName
+        }
+        return uniqueName
     }
     
     func deliveryStatusChanged(status: CPMessageStatus) {
@@ -98,9 +136,9 @@ class Chat_Handler : CPChatDelegate {
         chatConversationObject.send(text: message, withFile: fileAttachment, progress: { (value1, value2) in
         }) { (error,outBoundMessage) in
             if(error != nil) {
-                handler(error)
+                self.delegate_CHAT?.sendMultiMediaMessage(isSuccess: false, fileAttachMent:fileAttachment, message: message)
             } else {
-                handler(error)
+                self.delegate_CHAT?.sendMultiMediaMessage(isSuccess: true, fileAttachMent:fileAttachment, message: message)
             }
         }
     }
