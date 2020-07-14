@@ -3,7 +3,7 @@ import UIKit
 import CPaaSSDK
 import KMPlaceholderTextView
 
-class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
+class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var tbBubbleDemo: LynnBubbleTableView!
     @IBOutlet weak var destinationNumber: UITextField!
@@ -20,6 +20,7 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
     var userMe = LynnUserData(userUniqueId: "123", userNickName: "", userProfileImage: nil, additionalInfo: nil)//UIImage(named: "ico_girlprofile")
     var userSomeone = LynnUserData(userUniqueId: "234", userNickName: "", userProfileImage: UIImage(named: "ico_girlprofile"), additionalInfo: nil)
     var viewOpenFromGroup : Bool!
+    let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,11 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
         inputTextView.layer.cornerRadius = 4.0
         inputTextView.layer.borderColor = UIColor.gray.cgColor
         inputTextView.layer.borderWidth = 0.8
+        
+        imagePicker.delegate = self
+        
+        let testUIBarButtonItem = UIBarButtonItem(image: UIImage(named: "add_Image"), style: .plain, target: self, action: #selector(self.addImageTapped))
+        self.navigationItem.rightBarButtonItem  = testUIBarButtonItem
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,8 +78,14 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc func addImageTapped() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        if NetworkState.isConnected() {
+            if NetworkState.isConnected() {
             if destinationNumber.isEmpty() && self.viewOpenFromGroup == false{
                 DispatchQueue.main.async { () -> Void in
                     LoaderClass.sharedInstance.hideOverlayView()
@@ -110,13 +122,53 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
         }
     }
     
+    func sendMessageWithAttachMent() {
+      
+    }
+    
+   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if #available(iOS 11.0, *) {
+            if self.destinationNumber.isEmpty() || self.inputTextView.text.count == 0 {
+            DispatchQueue.main.async { () -> Void in
+            Alert.instance.showAlert(msg: "Please enter message and user id.", title: "", sender: self)
+            }
+        }
+        else {
+            if let pickedImageUrl = info[UIImagePickerController.InfoKey.imageURL] as? URL {
+                    self.chat_Handler.cpaas = self.cpaas
+                    self.chat_Handler.subscribeServices()
+                    chat_Handler.destinationNumber = destinationNumber.text
+                    self.chat_Handler.sendMessageWithAttachment(message: self.inputTextView.text!, destinationNumberAddress: self.destinationNumber.text!, fileAttachment: pickedImageUrl) { (error) in
+                        if(error == nil) {
+                            print("Message Delivered Sucessfully.")
+                        } else {
+                            print("Message Delivery fail.")
+                        }
+                    }
+                }
+        }
+    }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: Multimedia image delegate
+      func inboundImageMessageReceived(imageUrl: URL, senderNumber: String) {
+          DispatchQueue.main.async { () -> Void in
+              print("inboundImageMessageReceived");
+             self.userSomeone.userNickName = senderNumber
+            let imgData = LynnAttachedImageData(url: imageUrl.absoluteString)
+             let bubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: nil, messageDate: Date(), attachedImage: imgData)
+              self.arrChatTest.append(bubbleData)
+              self.tbBubbleDemo.reloadData()
+              self.chatInputView.resignFirstResponder()
+          }
+      }
+    
     // MARK: SmsDelegate methods
     func inboundMessageReceived(message: String, senderNumber: String) {
         DispatchQueue.main.async { () -> Void in
             print("inboundMessageReceived");
-            
             self.userSomeone.userNickName = senderNumber
-            
             let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: message, messageDate: Date())
             self.arrChatTest.append(bubbleData)
             self.tbBubbleDemo.reloadData()
@@ -130,6 +182,28 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate {
     func outboundMessageSent() {
         print("outboundMessageSent");
     }
+    
+    func sendMultiMediaMessage(isSuccess: Bool,fileAttachMent : URL,message: String) {
+           if isSuccess {
+               DispatchQueue.main.async { () -> Void in
+                   LoaderClass.sharedInstance.hideOverlayView()
+                   self.userSomeone.userNickName = self.destinationNumber.text
+                   let imgData = LynnAttachedImageData(url: fileAttachMent.absoluteString)
+                   let bubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: message, messageDate: Date(), attachedImage: imgData)
+                   self.arrChatTest.append(bubbleData)
+                   self.tbBubbleDemo.reloadData()
+                    self.inputTextView.resignFirstResponder()
+               }
+           } else {
+               DispatchQueue.main.async { () -> Void in
+                   LoaderClass.sharedInstance.hideOverlayView()
+                   print("Failed to sent message")
+                   Alert.instance.showAlert(msg: "Failed to sent. Try again later.", title: "", sender: self)
+                   self.inputTextView.resignFirstResponder()
+               }
+           }
+       }
+    
     func sendMessage(isSuccess: Bool) {
         if isSuccess {
             DispatchQueue.main.async { () -> Void in
