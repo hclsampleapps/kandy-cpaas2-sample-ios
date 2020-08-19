@@ -28,6 +28,10 @@
 	<string>This app wants to use your photos.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
