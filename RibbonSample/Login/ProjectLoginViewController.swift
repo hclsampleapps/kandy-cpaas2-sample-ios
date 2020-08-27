@@ -2,7 +2,7 @@
 import UIKit
 import CPaaSSDK
 
-class ProjectLoginViewController: BaseViewController {
+class ProjectLoginViewController: BaseViewController,CPLoggingDelegate {
     
     @IBOutlet weak var container_View: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -30,14 +30,18 @@ class ProjectLoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.privateprojectkey_Field.text = "PRIV-nesonukuv.34mv.nesoproject1"
-        self.baseUrl_Field.text = "oauth-cpaas.att.com" ////"nvs-cpaas-oauth.kandy.io"
-        self.privateprojectsecret_Field.text =  "8fe371a7-8158-4800-bb98-ca3ed7291816"
+        self.privateprojectkey_Field.text = "abcde123-12a1-1a23-1234-123a12345a1a"
+        self.baseUrl_Field.text = "oauth-cpaas.att.com"
+        self.privateprojectsecret_Field.text =  "123abcde-a123-1234-abcd-ab12345c67d8"
         
         self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "Client Credentials")
         NotificationCenter.default.addObserver(self, selector: #selector(ProjectLoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProjectLoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         changeViewLayout()
+    }
+    
+    func log(_ logLevel: CPLogLevel, withLogContext logContext: String, withMethodName methodName: Selector?, withMessage logMessage: String) {
+         print("logLevel ",logLevel,"MethodName ",methodName! ,"logMessage ",logMessage)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -111,7 +115,18 @@ extension ProjectLoginViewController {
     
     func setConfig() {
         let configuration = CPConfig.sharedInstance()
-        configuration.restServerUrl = self.baseUrl_Field.text ?? "oauth-cpaas.att.com"  //"nvs-cpaas-oauth.kandy.io"
+        configuration.restServerUrl = self.baseUrl_Field.text ?? "oauth-cpaas.att.com"
+        configuration.logManager.delegate = self
+        configuration.iceCollectionTimeout = 12
+        configuration.iceOption = .vanilla
+        
+        let iceServers: CPICEServers = CPICEServers()
+        iceServers.addICEServer("turns:turn-ucc-1.genband.com:443?transport=tcp")
+        iceServers.addICEServer("turns:turn-ucc-2.genband.com:443?transport=tcp")
+        iceServers.addICEServer("stun:turn-ucc-1.genband.com:3478?transport=udp")
+        iceServers.addICEServer("stun:turn-ucc-2.genband.com:3478?transport=udp")
+
+        //"nvs-cpaas-oauth.kandy.io"
         configuration.useSecureConnection = true
     }
     
