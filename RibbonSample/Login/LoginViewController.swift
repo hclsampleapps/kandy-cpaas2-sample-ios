@@ -37,10 +37,10 @@ class LoginViewController: BaseViewController,CPLoggingDelegate {
         super.viewDidLoad()
         
         // Hardcoded Values
-        self.clientId_Field.text = "abc.mvc"
-        self.email_Field.text =  "abc@cl.com"
-        self.password_Field.text = "abc@123"
-        self.baseUrl_Field.text = "oauth-cpaas.att.com"
+        self.clientId_Field.text = "PUB-project.name"
+        self.email_Field.text =  "user2@domain.com"
+        self.password_Field.text = "Test@123"
+        self.baseUrl_Field.text = "baseurl.domain.com"
         
         self.setNavigationBarColorForViewController(viewController: self, type: 0, titleString: "Password Grant")
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
