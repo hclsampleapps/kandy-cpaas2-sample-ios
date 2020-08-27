@@ -28,9 +28,7 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
         call_Handler.delegate_CALL = self
         
         txtDestNumber.placeholder = "[userId]@[domain]"
-        txtDestNumber.text = "nesonukuv@nesonukuv.34mv.att.com"
-        //txtDestNumber.text = "+12522327784@kandy.pass.5gt3.att.com"
-        
+        txtDestNumber.text = "+1234567891"        
         
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "CALL")
         
