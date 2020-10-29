@@ -49,8 +49,12 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate,UII
         
         imagePicker.delegate = self
         
-        let testUIBarButtonItem = UIBarButtonItem(image: UIImage(named: "add_Image"), style: .plain, target: self, action: #selector(self.addImageTapped))
-        self.navigationItem.rightBarButtonItem  = testUIBarButtonItem
+        let multimediaBarButtonItem = UIBarButtonItem(image: UIImage(named: "add_Image"), style: .plain, target: self, action: #selector(self.addImageTapped))
+        
+        let historyBarButtonItem = UIBarButtonItem(title: "Chat History", style: .plain, target: self, action: #selector(self.getChatHistory))
+        
+        self.navigationItem.rightBarButtonItems  = [multimediaBarButtonItem,historyBarButtonItem]
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,6 +123,38 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate,UII
                 LoaderClass.sharedInstance.hideOverlayView()
                 Alert.instance.showAlert(msg: "No Internet Connection", title: "", sender: self)
             }
+        }
+    }
+    
+    @objc func getChatHistory() {
+        if(self.destinationNumber.text?.count != 0) {
+        self.cpaas.chatService?.fetchConversation(withParticipant: "test1@karan.prod.lwjn.att.com", completion: { (error, results) in
+            if(error == nil) {
+                for case let converstion : CPConversation in results?.result! as! [CPConversation] {
+                    converstion.fetchMessages { (error, results) in
+                        for case let message : CPMessage in results?.result! as! [CPMessage] {
+                            print("Message -----------------> %s",message.sender)
+                            if(message.sender == self.destinationNumber.text) {
+                                let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userMe, dataOwner: .me, message: message.text, messageDate: Date())
+                                self.arrChatTest.append(bubbleData)
+                                self.tbBubbleDemo.reloadData()
+                            } else {
+                                let bubbleData:LynnBubbleData = LynnBubbleData(userData: self.userSomeone, dataOwner: .someone, message: message.text, messageDate: Date())
+                                self.arrChatTest.append(bubbleData)
+                                self.tbBubbleDemo.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        } else {
+            let dialogMessage = UIAlertController(title: "Alert", message: "Please add destination address to get the history.", preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "OK", style: .cancel) { (action) -> Void in
+                print("Cancel button click...")
+            }
+            dialogMessage.addAction(cancel)
+            self.present(dialogMessage, animated: true, completion: nil)
         }
     }
     
