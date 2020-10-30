@@ -128,7 +128,7 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate,UII
     
     @objc func getChatHistory() {
         if(self.destinationNumber.text?.count != 0) {
-        self.cpaas.chatService?.fetchConversation(withParticipant: "test1@karan.prod.lwjn.att.com", completion: { (error, results) in
+            self.cpaas.chatService?.fetchConversation(withParticipant: self.destinationNumber.text!, completion: { (error, results) in
             if(error == nil) {
                 for case let converstion : CPConversation in results?.result! as! [CPConversation] {
                     converstion.fetchMessages { (error, results) in
