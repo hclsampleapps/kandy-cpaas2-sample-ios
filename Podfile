@@ -6,7 +6,7 @@ target 'RibbonSample' do
   use_frameworks!
     pod 'SwiftyJSON'
     pod 'KMPlaceholderTextView'
-    pod 'KandyCPaaSMobileSDK' , '2.11.0'
+    pod 'KandyCPaaSMobileSDK' , '2.12.0'
     project 'RibbonSample.xcodeproj'
 
     
