@@ -125,9 +125,6 @@ extension ProjectLoginViewController {
         iceServers.addICEServer("turns:turn-ucc-2.genband.com:443?transport=tcp")
         iceServers.addICEServer("stun:turn-ucc-1.genband.com:3478?transport=udp")
         iceServers.addICEServer("stun:turn-ucc-2.genband.com:3478?transport=udp")
-
-        //"nvs-cpaas-oauth.kandy.io"
-        configuration.useSecureConnection = true
     }
     
     func subscribeServices() {
