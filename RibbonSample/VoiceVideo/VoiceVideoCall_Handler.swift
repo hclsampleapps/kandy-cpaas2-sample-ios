@@ -194,5 +194,13 @@ class VoiceVideoCall_Handler : NSObject,CPCallApplicationDelegate{
     
     func forwardCallFailed(_ call: CPCallDelegate, withError error: CPError) {
         print("Forward Call Failed");
-    }    
+    }
+    
+    func sendRingingFeedbackSucceed(_ call: CPIncomingCallDelegate) {
+        print("send Ringing Feedback Succeed");
+    }
+    
+    func sendRingingFeedbackFailed(_ call: CPIncomingCallDelegate, withError error: CPError) {
+        print("send Ringing Feedback Failed");
+    }
 }
