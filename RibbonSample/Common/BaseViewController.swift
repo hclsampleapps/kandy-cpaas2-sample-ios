@@ -23,6 +23,15 @@ class BaseViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         viewController.navigationController?.navigationBar .setBackgroundImage(tempImage, for: UIBarMetrics.default)
+
+        if #available(iOS 15.0, *) {
+              let appearance = UINavigationBarAppearance()
+              appearance.configureWithOpaqueBackground()
+              appearance.backgroundImage = tempImage
+              viewController.navigationController?.navigationBar.standardAppearance = appearance
+              viewController.navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+            }
+
         
         let titleLabel = UILabel.init(frame: CGRect(x:(viewBg.frame.size.width/2)-25, y:14.5, width:50, height:35))
         titleLabel.text = titleString
