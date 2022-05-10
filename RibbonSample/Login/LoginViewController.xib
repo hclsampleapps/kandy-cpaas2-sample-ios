@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +58,7 @@
                                     <subviews>
                                         <textField opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Client ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="420-SR-fck">
                                             <rect key="frame" x="10" y="4" width="268" height="32"/>
-                                            <nil key="textColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="clientid"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -82,7 +80,7 @@
                                     <subviews>
                                         <textField opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Gy-4H-EPJ">
                                             <rect key="frame" x="10" y="4" width="268" height="32"/>
-                                            <nil key="textColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="email"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             <connections>
@@ -104,7 +102,7 @@
                                     <subviews>
                                         <textField opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ade-AP-dOv">
                                             <rect key="frame" x="10" y="4" width="268" height="32"/>
-                                            <nil key="textColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="password"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             <connections>
@@ -126,7 +124,7 @@
                                     <subviews>
                                         <textField opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Base Url" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BlV-iL-tgv">
                                             <rect key="frame" x="10" y="4" width="268" height="32"/>
-                                            <nil key="textColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="baseurl"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -143,9 +141,10 @@
                                         <constraint firstItem="BlV-iL-tgv" firstAttribute="leading" secondItem="TIV-No-ZYi" secondAttribute="leading" constant="10" id="iph-4g-yAt"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-OT-b0V">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-OT-b0V">
                                     <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                                     <color key="backgroundColor" red="0.015686274509803921" green="0.62745098039215685" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="login"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="bZP-OT-b0V" secondAttribute="height" multiplier="6.4" id="bqk-wm-BXA"/>
                                     </constraints>
@@ -194,6 +193,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="giS-rx-8UT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6xb-fC-EmH"/>
@@ -201,7 +201,6 @@
                 <constraint firstItem="giS-rx-8UT" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="KMY-La-oVk"/>
                 <constraint firstAttribute="trailing" secondItem="giS-rx-8UT" secondAttribute="trailing" id="lHH-9o-aXw"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.75" y="154.22535211267606"/>
         </view>
     </objects>
