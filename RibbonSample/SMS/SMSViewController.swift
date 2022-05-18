@@ -29,9 +29,6 @@ class SMSViewController: BaseViewController, SMSDelegate {
 //        tbBubbleDemo.bubbleDelegate = self
         tbBubbleDemo.bubbleDataSource = self
         
-//        senderNumber.text = "+19492657842"
-//        destinationNumber.text = "+19492657843"
-
         senderNumber.placeholder = "Sender Number"
         destinationNumber.placeholder = "Destination Number"
 

@@ -28,7 +28,7 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
         call_Handler.delegate_CALL = self
         
         txtDestNumber.placeholder = "[userId]@[domain]"
-        txtDestNumber.text = "+1234567891"        
+        txtDestNumber.text = "+1234567891"
         
         self.setNavigationBarColorForViewController(viewController: self, type: 1, titleString: "CALL")
         
@@ -111,7 +111,12 @@ class VoiceVideoViewController: BaseViewController, UIImagePickerControllerDeleg
 
 // Delegate methods from handler
 
-extension VoiceVideoViewController{
+extension VoiceVideoViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func establishCallSucceeded(_ call: CPOutgoingCallDelegate) {
         DispatchQueue.main.async { () -> Void in
@@ -402,7 +407,7 @@ extension VoiceVideoViewController{
  //        request.httpMethod = "Post"
  //        request.timeoutInterval = 30
  //        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
- //        let bodyData = "client_id=PUB-kandy.j6z8&username=ashishgoel35@gmail.com&password=Test@123&grant_type=password&scope=openid"
+ //        let bodyData = "client_id=PUB-project.clientid&username=username@gmail.com&password=Test@123&grant_type=password&scope=openid"
  //        request.httpBody = bodyData.data(using: String.Encoding.utf8);
  //
  //        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data,response,error in
@@ -444,8 +449,8 @@ extension VoiceVideoViewController{
  //
  //    func setOutGoingCall() {
  //        let service = self.cpaas.callService
- //        let originator = CPUriAddress(username: "ashish8", withDomain: "kandy.j6z8.att.com")
- //        let term = CPUriAddress(username: "ashsih34", withDomain: "kandy.j6z8.att.com")
+ //        let originator = CPUriAddress(username: "user1", withDomain: "kandy.domain.com")
+ //        let term = CPUriAddress(username: "user2", withDomain: "kandy.domain.com")
  //        service?.createOutGoingCall(self, andOriginator: originator, andTerminator: term, completion: { (call, error) in
  //            if let error = error {
  //                print("Call Couldn't be created - Error: \(error.localizedDescription)")

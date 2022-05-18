@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +24,7 @@
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN9-lI-hWg">
-                    <rect key="frame" x="16" y="32" width="288" height="40"/>
+                    <rect key="frame" x="16" y="12" width="288" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="2Ow-cZ-nur"/>
                     </constraints>
@@ -38,6 +37,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzm-Ur-gMa">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                            <accessibility key="accessibilityConfiguration" identifier="endbtn"/>
                             <state key="normal" image="reject-call"/>
                             <connections>
                                 <action selector="endCallButtonTapped:" destination="Lpg-Yt-ccL" eventType="touchUpInside" id="xgA-2a-haN"/>
@@ -50,6 +50,7 @@
                     </constraints>
                 </stackView>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="6HI-H5-hot"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="6HI-H5-hot" firstAttribute="bottom" secondItem="Iya-wH-Igo" secondAttribute="bottom" id="18L-8T-Ia7"/>
@@ -63,7 +64,6 @@
                 <constraint firstItem="Iya-wH-Igo" firstAttribute="leading" secondItem="Lpg-Yt-ccL" secondAttribute="leading" id="q0T-qq-3KY"/>
                 <constraint firstItem="6HI-H5-hot" firstAttribute="bottom" secondItem="tLo-6e-lG1" secondAttribute="bottom" id="tXQ-OO-jp5"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="6HI-H5-hot"/>
             <connections>
                 <outlet property="endCall" destination="bzm-Ur-gMa" id="1oG-6i-oK6"/>
                 <outlet property="lblDestNumber" destination="GN9-lI-hWg" id="KIP-Kp-p8b"/>

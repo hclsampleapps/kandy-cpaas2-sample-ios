@@ -31,7 +31,6 @@ class ChatViewController: BaseViewController, ChatDelegate,GroupChatDelegate,UII
         tbBubbleDemo.bubbleDataSource = self
         
         destinationNumber.placeholder = "[userId]@[domain]"
-        //        destinationNumber.text = "amitg@hcl.z9ht.att.com"
         
         chat_Handler.cpaas = self.cpaas
         chat_Handler.subscribeServices()
